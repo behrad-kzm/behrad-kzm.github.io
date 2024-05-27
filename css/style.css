@@ -1427,3 +1427,25 @@ body.offcanvas {
 
 .js .animate-box {
   opacity: 0; }
+
+  /* Ensure all .services elements have the same height */
+.colorlib-services .services {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Ensure all .desc elements take up the remaining space */
+.colorlib-services .services .desc {
+  flex-grow: 1;
+}
+
+/* Ensure all .services elements in the same row have the same height */
+.colorlib-services .row-pt-md {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colorlib-services .row-pt-md > div {
+  display: flex;
+}
