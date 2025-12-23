@@ -6,7 +6,7 @@ export const portfolioTree: TreeItem[] = [
     name: 'README.md',
     type: 'file',
     extension: 'md',
-    content: `# 👨‍💻 Welcome to My Portfolio
+    content: `# 👨‍💻 It's Me, S. Behrad Kazemi
 
 ![Profile Picture](https://avatars.githubusercontent.com/u/6783461?v=4)
 
