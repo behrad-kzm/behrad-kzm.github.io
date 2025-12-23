@@ -15,5 +15,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/behrad-kzm.github.io/'
+  base: '/'
 }));
