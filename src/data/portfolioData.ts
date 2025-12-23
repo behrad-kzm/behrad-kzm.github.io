@@ -175,11 +175,16 @@ interface Experience {
   ];
   technologies: [
     "Node.js",
-    "Express.js",
-
+    "NestJS",
+    "Online Scheduling system",
+    "Stripe payment",
     "MySQL",
-    "AWS",
-    "JWT"
+    "Azure Services",
+    "Twilio 2 way messaging",
+    "OpenDental",
+    "Redis",
+    "Docker",
+    "Azure Container Apps",
   ];
 }
 
@@ -201,7 +206,7 @@ interface Experience {
     "Built scalable backend services",
     "Implemented real-time features using WebSockets",
     "Developed data processing pipelines",
-    "Created comprehensive API documentation",
+    "Created Scalable and Distributed Notification System",
     "Participated in code reviews and pair programming"
   ];
   technologies: [
@@ -222,7 +227,7 @@ export default Experience;`
         type: 'file',
         extension: 'swift',
         content: `// Senior iOS Developer @ Barandeh Bash Show
-// 2019 - 2019
+// 2019
 
 import Foundation
 
@@ -233,7 +238,7 @@ struct Experience {
     
     let responsibilities = [
         "Led iOS development team",
-        "Architected app using MVVM pattern",
+        "Architected app using MVVMC pattern with reactive programming",
         "Implemented complex UI animations",
         "Integrated video streaming features",
         "Optimized app performance and memory usage"
@@ -242,10 +247,11 @@ struct Experience {
     let technologies = [
         "Swift",
         "UIKit",
-        "SwiftUI",
+        "RxSwift",
+        "RxCocoa",
         "Core Data",
         "Combine",
-        "AVFoundation"
+        "Socket.io",
     ]
 }`
       },
@@ -276,6 +282,8 @@ struct Experience {
         "Swift",
         "UIKit",
         "MapKit",
+        "XMPP",
+        "Google Map SDK",
         "Core Location",
         "Alamofire",
         "Firebase"
@@ -341,9 +349,9 @@ public:
     std::vector<std::string> technologies = {
         "C++",
         "OpenCV",
-        "ROS (Robot Operating System)",
-        "Linux",
-        "Python"
+        "Nao Robots",
+        "BHuman framework",
+        "Debian",
     };
 };`
       }
@@ -403,14 +411,14 @@ Comprehensive computer science and software engineering program focusing on:
         content: `# IELTS Certification
 ## International English Language Testing System
 
-### Overall Score: 7.5
-**Test Date:** March 2023
+### Overall Score: 6.5
+**Test Date:** 12/SEP/2025
 
 ## Score Breakdown
-- **Listening:** 8.0
-- **Reading:** 7.5
-- **Writing:** 7.0
-- **Speaking:** 7.5
+- **Listening:** 7
+- **Reading:** 6.5
+- **Writing:** 6.0
+- **Speaking:** 6.5
 
 ## Recognition
 IELTS is recognized by over 10,000 organizations worldwide, including universities, employers, professional bodies, and governments.
@@ -427,40 +435,33 @@ This score demonstrates strong English proficiency suitable for:
         extension: 'md',
         content: `# Professional Courses & Certifications
 
-## Technical Certifications
-
-### AWS Certified Solutions Architect - Associate
-**Issuer:** Amazon Web Services
-**Date:** 2023
-**Skills:** Cloud Architecture, AWS Services, Scalability
-
-### Kubernetes Administrator (CKA)
-**Issuer:** Cloud Native Computing Foundation
-**Date:** 2022
-**Skills:** Container Orchestration, DevOps, Cloud Native
-
-### MongoDB Certified Developer
-**Issuer:** MongoDB University
-**Date:** 2021
-**Skills:** NoSQL, Database Design, Performance Tuning
-
 ## Online Courses
 
-### Advanced TypeScript Programming
-**Platform:** Udemy
-**Completion:** 2023
+### The OWASP Top 10 Security Risks
+**Issuer:** Udemy
+**Date:** Feb 2025
+**Skills:** Security Risks
 
-### iOS App Development with SwiftUI
-**Platform:** Coursera
-**Completion:** 2022
+### CKAD
+**Issuer:** Udemy
+**Date:** Jan 2025
+**Skills:** Kubernetes, DevOps, Cloud Native
 
-### Microservices Architecture
-**Platform:** Pluralsight
-**Completion:** 2022
+### Microservices Foundations
+**Platform:** Linkedin
+**Completion:** Dev 2024
 
-### Machine Learning Specialization
-**Platform:** Coursera (Stanford)
-**Completion:** 2021`
+### Microservices Design Patterns
+**Platform:** Linkedin
+**Completion:** Dec 2024
+
+### Software Architecture: Domain-Driven Design
+**Platform:** Linkedin
+**Completion:** Dec 2024
+
+### HIPPA 101 - Dental
+**Platform:** Smart Training
+**Completion:** Nov 2023`
       }
     ]
   },
@@ -486,7 +487,6 @@ This score demonstrates strong English proficiency suitable for:
 ## Backend Technologies
 - Node.js / Express.js
 - NestJS
-- Django / Flask
 - REST API Design
 - GraphQL
 - WebSockets
@@ -512,6 +512,7 @@ This score demonstrates strong English proficiency suitable for:
 - Docker
 - Kubernetes
 - AWS (EC2, S3, Lambda, RDS)
+- Azure Services
 - CI/CD (GitHub Actions, Jenkins)
 - Nginx
 - Linux Administration
@@ -552,16 +553,10 @@ Sharing knowledge and experiences in software development through:
 - Open source contributions
 
 ### Stats
-- **Subscribers:** 15K+
-- **Total Views:** 250K+
-- **Videos Published:** 80+
+- **Subscribers:** 165+
+- **Total Views:** 25K+
+- **Videos Published:** 25+
 - **Average Rating:** 4.8/5
-
-### Popular Videos
-1. "Building Scalable Microservices with Node.js"
-2. "SwiftUI Complete Guide for Beginners"
-3. "System Design Interview Preparation"
-4. "Clean Code Principles Every Developer Should Know"
 
 ### Community
 Engaged with a community of developers through:
