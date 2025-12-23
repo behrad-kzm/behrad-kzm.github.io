@@ -1,9 +1,45 @@
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import MarkdownPreview from './MarkdownPreview';
 
 interface CodeViewerProps {
   content: string;
   filename: string;
 }
+
+// Detect language from filename extension
+const getLanguageFromFilename = (filename: string): string => {
+  const ext = filename.split('.').pop()?.toLowerCase();
+  const languageMap: Record<string, string> = {
+    'ts': 'typescript',
+    'tsx': 'typescript',
+    'js': 'javascript',
+    'jsx': 'javascript',
+    'py': 'python',
+    'java': 'java',
+    'cpp': 'cpp',
+    'c': 'c',
+    'cs': 'csharp',
+    'go': 'go',
+    'rs': 'rust',
+    'swift': 'swift',
+    'kt': 'kotlin',
+    'rb': 'ruby',
+    'php': 'php',
+    'sh': 'bash',
+    'bash': 'bash',
+    'json': 'json',
+    'yaml': 'yaml',
+    'yml': 'yaml',
+    'xml': 'xml',
+    'html': 'html',
+    'css': 'css',
+    'scss': 'scss',
+    'sql': 'sql',
+    'md': 'markdown',
+  };
+  return languageMap[ext || ''] || 'typescript'; // default to typescript
+};
 
 const CodeViewer = ({ content, filename }: CodeViewerProps) => {
   const isMarkdown = filename.endsWith('.md');
@@ -13,26 +49,31 @@ const CodeViewer = ({ content, filename }: CodeViewerProps) => {
     return <MarkdownPreview content={content} />;
   }
   
-  // Otherwise show code with line numbers
-  const lines = content.split('\n');
+  const language = getLanguageFromFilename(filename);
   
   return (
-    <div className="flex h-full bg-vscode-editor overflow-hidden">
-      {/* Line numbers */}
-      <div className="bg-vscode-editor text-muted-foreground text-right pr-4 pl-4 py-4 select-none border-r border-vscode-border">
-        {lines.map((_, index) => (
-          <div key={index} className="leading-6 text-xs">
-            {index + 1}
-          </div>
-        ))}
-      </div>
-      
-      {/* Content */}
-      <div className="flex-1 overflow-auto">
-        <pre className="p-4 text-sm leading-6 text-foreground">
-          <code className="font-mono">{content}</code>
-        </pre>
-      </div>
+    <div className="h-full bg-vscode-editor overflow-auto">
+      <SyntaxHighlighter
+        language={language}
+        style={vscDarkPlus}
+        showLineNumbers={true}
+        customStyle={{
+          margin: 0,
+          padding: '1rem',
+          background: 'transparent',
+          fontSize: '0.875rem',
+          lineHeight: '1.5rem',
+        }}
+        lineNumberStyle={{
+          minWidth: '3em',
+          paddingRight: '1em',
+          color: '#858585',
+          userSelect: 'none',
+        }}
+        wrapLines={true}
+      >
+        {content}
+      </SyntaxHighlighter>
     </div>
   );
 };
