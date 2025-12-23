@@ -8,22 +8,25 @@ export const portfolioTree: TreeItem[] = [
     extension: 'md',
     content: `# 👨‍💻 Welcome to My Portfolio
 
-![Profile Picture](https://api.dicebear.com/7.x/avataaars/svg?seed=developer)
+![Profile Picture](https://avatars.githubusercontent.com/u/6783461?v=4)
 
 ## About Me
 
-Hello! I'm a passionate Full-Stack Developer with extensive experience in backend development and iOS app development. I specialize in building scalable, high-performance applications and have worked with cutting-edge technologies across multiple platforms.
-
-With over 6 years of professional experience, I've contributed to various successful projects ranging from enterprise solutions to mobile applications. I'm also passionate about sharing knowledge through my tech podcast and YouTube channel.
+I’m an experienced Backend Engineer with a strong foundation in backend development and system design, particularly for
+distributed systems under heavy load.
+My journey began with JavaScript and Node.js, building web applications using Express.js. As I advanced, I adopted TypeScript
+for its type safety and scalability, which led me to NestJS, a framework I now use extensively to design and manage complex,
+maintainable, and efficient backend systems.
+I'm also experienced with both SQL (Postgres, MySQL) and NoSQL (MongoDB) databases, message queues (Kafka, RabbitMQ
+and BulMQ), cloud-native infrastructure (Docker, Kubernetes, Azure), Rest API design and GraphQL and have contributed to the open-source ecosystem by
+publishing npm packages.
 
 ---
 
 ## 📧 Contact Information
 
-- **Email:** [your.email@example.com](mailto:your.email@example.com)
-- **Phone:** +1 (555) 123-4567
-- **Location:** Your City, Country
-- **Website:** [www.yourwebsite.com](https://www.yourwebsite.com)
+- **Email:** [me@behradkazemi.com](mailto:me@behradkazemi.com)
+- **Website:** [behradkazemi.com](https://behradkazemi.com)
 
 ---
 
@@ -31,9 +34,9 @@ With over 6 years of professional experience, I've contributed to various succes
 
 | LinkedIn | GitHub | Twitter |
 |:--------:|:------:|:-------:|
-| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourprofile) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername) | [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/yourhandle) |
+| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kaazemi/) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/behrad-kzm) | [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/behradkzm) |
 | **YouTube** | **Medium** | **Instagram** |
-| [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@yourchannel) | [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@yourusername) | [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/yourhandle) |
+| [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@uncutfarsi) | [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@behradkazemi) | [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/behcrop/) |
 
 ---
 
@@ -50,16 +53,18 @@ With over 6 years of professional experience, I've contributed to various succes
 - **Mobile:** Swift, iOS Development, SwiftUI
 - **Cloud:** AWS, Docker, Kubernetes
 - **Database:** PostgreSQL, MongoDB, Redis
+- **Message Queues:** Kafka, RabbitMQ, BulMQ
+- **API Design:** REST, GraphQL
 
 ### Education
 - **BEng in Computer Software Engineering**
-- Qazvin Islamic Azad University (2014-2018)
+- Qazvin Islamic Azad University (2013-2024)
 
 ---
 
 ## 📺 Content Creator
 
-I run a tech-focused YouTube channel with 15K+ subscribers where I share:
+I run a tech-focused YouTube channel where I share:
 - Software development tutorials
 - System design discussions
 - Career advice for developers
@@ -73,9 +78,6 @@ I run a tech-focused YouTube channel with 15K+ subscribers where I share:
 
 ### Backend Development
 Specializing in building robust, scalable backend systems with modern technologies and best practices.
-
-### iOS Development
-Creating beautiful, performant iOS applications using Swift and SwiftUI.
 
 ### System Architecture
 Designing and implementing microservices architectures that scale.
@@ -115,12 +117,12 @@ Feel free to reach out via email or connect with me on LinkedIn!
         type: 'file',
         extension: 'ts',
         content: `// Senior Backend Developer @ RedRock
-// 2022 - Present
+// 2025 - Present
 
 interface Experience {
   company: "RedRock";
   position: "Senior Backend Developer";
-  period: "2022 - Present";
+  period: "Mar 2025 - Present";
   responsibilities: [
     "Led backend architecture design and implementation",
     "Managed a team of 5 backend developers",
@@ -132,6 +134,18 @@ interface Experience {
     "Node.js",
     "TypeScript",
     "PostgreSQL",
+    "Hasura",
+    "NestJS",
+    "REST API Design",
+    "GraphQL",
+    "Web Sockets",
+    "WebRTC",
+    "Kafka",
+    "BullMQ",
+    "MongoDB",
+    "MediaSoup"
+    "Video Streaming",
+    "Microservices Architecture",
     "Redis",
     "Docker",
     "Kubernetes"
@@ -146,12 +160,12 @@ export default Experience;`
         type: 'file',
         extension: 'ts',
         content: `// Backend Developer @ SmileLink
-// 2020 - 2022
+// 2023 - 2025
 
 interface Experience {
   company: "SmileLink";
   position: "Backend Developer";
-  period: "2020 - 2022";
+  period: "Jun 2023 - Jan 2025";
   responsibilities: [
     "Developed RESTful APIs for mobile applications",
     "Implemented authentication and authorization systems",
@@ -162,7 +176,8 @@ interface Experience {
   technologies: [
     "Node.js",
     "Express.js",
-    "MongoDB",
+
+    "MySQL",
     "AWS",
     "JWT"
   ];
@@ -176,12 +191,12 @@ export default Experience;`
         type: 'file',
         extension: 'ts',
         content: `// Backend Developer @ Oppodax
-// 2019 - 2020
+// 2019 - 2023
 
 interface Experience {
   company: "Oppodax";
   position: "Backend Developer";
-  period: "2019 - 2020";
+  period: "Sep 2019 - Apr 2023";
   responsibilities: [
     "Built scalable backend services",
     "Implemented real-time features using WebSockets",
@@ -190,11 +205,12 @@ interface Experience {
     "Participated in code reviews and pair programming"
   ];
   technologies: [
-    "Python",
-    "Django",
-    "PostgreSQL",
+    "NestJs",
+    "MySQL",
     "Redis",
-    "Celery"
+    "RabbitMQ",
+    "Docker",
+    "Kubernetes"
   ];
 }
 
@@ -205,15 +221,15 @@ export default Experience;`
         name: 'senior-ios.bbshow.swift',
         type: 'file',
         extension: 'swift',
-        content: `// Senior iOS Developer @ BBShow
-// 2021 - 2022
+        content: `// Senior iOS Developer @ Barandeh Bash Show
+// 2019 - 2019
 
 import Foundation
 
 struct Experience {
-    let company = "BBShow"
+    let company = "Barandeh Bash Show"
     let position = "Senior iOS Developer"
-    let period = "2021 - 2022"
+    let period = "Jan 2019 - Aug 2019"
     
     let responsibilities = [
         "Led iOS development team",
@@ -239,14 +255,14 @@ struct Experience {
         type: 'file',
         extension: 'swift',
         content: `// iOS Developer @ SpeedDeliv
-// 2019 - 2021
+// 2017 - 2018
 
 import Foundation
 
 struct Experience {
     let company = "SpeedDeliv"
     let position = "iOS Developer"
-    let period = "2019 - 2021"
+    let period = "Jan 2017 - Dec 2018"
     
     let responsibilities = [
         "Developed delivery tracking features",
@@ -272,14 +288,14 @@ struct Experience {
         type: 'file',
         extension: 'swift',
         content: `// iOS Developer Intern @ Sibche
-// 2018 - 2019
+// 2016 - 2017
 
 import Foundation
 
 struct Experience {
     let company = "Sibche"
     let position = "iOS Developer Intern"
-    let period = "2018 - 2019"
+    let period = "Feb 2016 - Jan 2017"
     
     let responsibilities = [
         "Assisted in app development",
@@ -290,7 +306,7 @@ struct Experience {
     ]
     
     let technologies = [
-        "Swift",
+        "Objective-C",
         "UIKit",
         "Auto Layout",
         "Git"
@@ -303,7 +319,7 @@ struct Experience {
         type: 'file',
         extension: 'cpp',
         content: `// RoboCup Team Member
-// 2017 - 2018
+// 2014 - 2017
 
 #include <iostream>
 #include <vector>
@@ -312,7 +328,7 @@ class RoboCupExperience {
 public:
     std::string team = "University RoboCup Team";
     std::string role = "Software Developer";
-    std::string period = "2017 - 2018";
+    std::string period = "Aug2014 - Nov 2017";
     
     std::vector<std::string> responsibilities = {
         "Developed robot control algorithms",
@@ -345,7 +361,7 @@ public:
         extension: 'md',
         content: `# Bachelor of Engineering in Computer Software
 ## Qazvin Islamic Azad University (QIAU)
-### 2014 - 2018
+### 2013 - 2024
 
 ## About
 Comprehensive computer science and software engineering program focusing on:
