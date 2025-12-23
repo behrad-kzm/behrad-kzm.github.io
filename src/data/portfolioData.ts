@@ -124,11 +124,12 @@ interface Experience {
   position: "Senior Backend Developer";
   period: "Mar 2025 - Present";
   responsibilities: [
-    "Led backend architecture design and implementation",
-    "Managed a team of 5 backend developers",
-    "Optimized database queries reducing load time by 40%",
-    "Implemented microservices architecture",
-    "Designed and deployed scalable REST APIs"
+    "Contributed to the design and implementation of a recommendation system for a crypto-focused social media platform",
+    "Developed a personalized content delivery engine based on user behavior and crypto interests",
+    "Designed and implemented a fully distributed real-time chat system supporting private and group messaging and video/audio streaming similar to IG live",
+    "Collaborated with the team lead on backend architecture decisions with a focus on scalability and reliability",
+    "Produced system architecture diagrams and effort estimations for assigned backend components",
+    "Participated in peer reviews and worked closely with cross-functional teams to ensure platform alignment"
   ];
   technologies: [
     "Node.js",
@@ -138,17 +139,15 @@ interface Experience {
     "NestJS",
     "REST API Design",
     "GraphQL",
-    "Web Sockets",
-    "WebRTC",
+    "WebSockets",
     "Kafka",
     "BullMQ",
     "MongoDB",
-    "MediaSoup"
-    "Video Streaming",
-    "Microservices Architecture",
     "Redis",
-    "Docker",
-    "Kubernetes"
+    "Microservices Architecture",
+    "Distributed Systems",
+    "MediaSoup",
+    "Real-Time Messaging"
   ];
 }
 
@@ -167,28 +166,38 @@ interface Experience {
   position: "Backend Developer";
   period: "Jun 2023 - Jan 2025";
   responsibilities: [
-    "Developed RESTful APIs for mobile applications",
-    "Implemented authentication and authorization systems",
-    "Integrated third-party payment gateways",
-    "Optimized application performance",
-    "Collaborated with frontend team for seamless integration"
+    "Built an appointment scheduling system integrating dental clinic front desk software with cloud services for real-time data synchronization",
+    "Integrated multiple Practice Management Systems (OpenDental, Dentrix, and others) with differing database structures",
+    "Implemented an edge-service pattern to normalize data, expose webhooks, and streamline onboarding of new PMS vendors",
+    "Designed rate-limited synchronization mechanisms to handle third-party API constraints without service disruption",
+    "Processed and cleansed inconsistent patient data and implemented logic to detect and merge duplicate or related records",
+    "Developed algorithms to identify primary patient records and link dependents, improving data accuracy and care management",
+    "Built a multi-doctor, multi-operatory appointment scheduling system to improve clinic efficiency",
+    "Developed a distributed event-driven notification system using SMS, email, and push notifications",
+    "Implemented two-way SMS messaging with server-side processing and admin dashboard visibility",
+    "Implemented end-to-end encrypted patient–provider chat in collaboration with frontend and mobile teams"
   ];
   technologies: [
     "Node.js",
     "NestJS",
-    "Online Scheduling system",
-    "Stripe payment",
+    "Appointment Scheduling Systems",
     "MySQL",
     "Azure Services",
-    "Twilio 2 way messaging",
-    "OpenDental",
-    "Redis",
-    "Docker",
     "Azure Container Apps",
+    "Docker",
+    "Redis",
+    "Twilio (Two-Way SMS)",
+    "SendGrid",
+    "Firebase Notifications",
+    "OpenDental",
+    "Dentrix",
+    "Event-Driven Architecture",
+    "Data Normalization & Cleansing"
   ];
 }
 
-export default Experience;`
+export default Experience;
+`
       },
       {
         id: 'backend-oppodax',
@@ -203,23 +212,27 @@ interface Experience {
   position: "Backend Developer";
   period: "Sep 2019 - Apr 2023";
   responsibilities: [
-    "Built scalable backend services",
-    "Implemented real-time features using WebSockets",
-    "Developed data processing pipelines",
-    "Created Scalable and Distributed Notification System",
-    "Participated in code reviews and pair programming"
+    "Developed a scalable notification system handling thousands of notifications daily for over 30,000 active users",
+    "Built and maintained scalable backend services supporting high-traffic workloads",
+    "Streamlined API integrations by creating a centralized shared library, improving deployment speed and code consistency",
+    "Implemented real-time features and event-driven workflows for user-facing systems",
+    "Integrated observability and monitoring using OpenTelemetry and Grafana to provide real-time business and system metrics",
+    "Participated in code reviews and pair programming to improve code quality and team alignment"
   ];
   technologies: [
-    "NestJs",
+    "NestJS",
     "MySQL",
     "Redis",
     "RabbitMQ",
     "Docker",
-    "Kubernetes"
+    "Kubernetes",
+    "OpenTelemetry",
+    "Grafana"
   ];
 }
 
-export default Experience;`
+export default Experience;
+`
       },
       {
         id: 'senior-ios-bbshow',
