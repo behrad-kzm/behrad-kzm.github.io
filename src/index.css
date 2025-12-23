@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* VSCode Dark Theme Colors */
+    --background: 220 13% 11%;
+    --foreground: 0 0% 85%;
+
+    --card: 220 13% 14%;
+    --card-foreground: 0 0% 85%;
+
+    --popover: 220 13% 14%;
+    --popover-foreground: 0 0% 85%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 220 13% 18%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.25rem;
+
+    /* VSCode specific colors */
+    --vscode-sidebar: 220 13% 9%;
+    --vscode-editor: 220 13% 11%;
+    --vscode-tab-inactive: 220 13% 14%;
+    --vscode-tab-active: 220 13% 18%;
+    --vscode-border: 220 13% 18%;
+    --vscode-hover: 220 13% 20%;
+    
+    /* File type colors */
+    --file-typescript: 204 100% 50%;
+    --file-swift: 14 100% 50%;
+    --file-cpp: 348 100% 50%;
+    --file-folder: 43 100% 50%;
+    --file-document: 0 0% 70%;
+
+    --sidebar-background: 220 13% 9%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 13% 20%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 220 13% 18%;
+    --sidebar-ring: 210 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+/* VSCode scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
