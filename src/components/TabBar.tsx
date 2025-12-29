@@ -1,4 +1,4 @@
-import { X } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 import { OpenTab } from '@/types/portfolio';
 import FileIcon from './FileIcon';
 
@@ -7,17 +7,30 @@ interface TabBarProps {
   activeTabId: string;
   onTabClick: (tabId: string) => void;
   onTabClose: (tabId: string) => void;
+  onSidebarToggle?: () => void;
 }
 
-const TabBar = ({ tabs, activeTabId, onTabClick, onTabClose }: TabBarProps) => {
+const TabBar = ({ tabs, activeTabId, onTabClick, onTabClose, onSidebarToggle }: TabBarProps) => {
   const getFileExtension = (filename: string) => {
     const parts = filename.split('.');
     return parts.length > 1 ? parts[parts.length - 1] : '';
   };
 
   return (
-    <div className="flex items-center bg-vscode-tabInactive border-b border-vscode-border overflow-x-auto">
-      {tabs.map((tab) => {
+    <div className="flex items-center bg-vscode-tabInactive border-b border-vscode-border pl-2.5">
+      {/* Mobile hamburger button */}
+      {onSidebarToggle && (
+        <button
+          className="md:hidden flex-shrink-0 px-2.5 py-2 hover:bg-vscode-hover transition-colors flex items-center justify-center"
+          onClick={onSidebarToggle}
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+      )}
+      
+      {/* Tabs container with horizontal scroll */}
+      <div className="flex items-center overflow-x-auto flex-1 px-2.5 pt-2.5">
+        {tabs.map((tab) => {
         const isActive = tab.id === activeTabId;
         const extension = getFileExtension(tab.name);
         
@@ -45,6 +58,7 @@ const TabBar = ({ tabs, activeTabId, onTabClick, onTabClose }: TabBarProps) => {
           </div>
         );
       })}
+      </div>
     </div>
   );
 };

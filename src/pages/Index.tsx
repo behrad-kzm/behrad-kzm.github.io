@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { FileItem, OpenTab } from '@/types/portfolio';
 import { portfolioTree } from '@/data/portfolioData';
+import { qaData } from '@/data/qaData';
 import Sidebar from '@/components/Sidebar';
 import TabBar from '@/components/TabBar';
 import CodeViewer from '@/components/CodeViewer';
+import QAViewer from '@/components/QAViewer';
 import StatusBar from '@/components/StatusBar';
 
 const Index = () => {
@@ -29,10 +31,32 @@ const Index = () => {
       const newTab: OpenTab = {
         id: file.id,
         name: file.name,
-        content: file.content
+        content: file.content,
+        type: 'file'
       };
       setOpenTabs([...openTabs, newTab]);
       setActiveTabId(file.id);
+    }
+  };
+
+  const handleQAClick = (qaId: string) => {
+    // Check if tab is already open
+    const existingTab = openTabs.find(tab => tab.id === qaId);
+    
+    if (existingTab) {
+      setActiveTabId(qaId);
+    } else {
+      const qaItem = qaData.find(item => item.id === qaId);
+      if (qaItem) {
+        const newTab: OpenTab = {
+          id: qaItem.id,
+          name: qaItem.title,
+          content: '', // Not used for QA tabs
+          type: 'qa'
+        };
+        setOpenTabs([...openTabs, newTab]);
+        setActiveTabId(qaItem.id);
+      }
     }
   };
 
@@ -64,6 +88,7 @@ const Index = () => {
         <Sidebar
           tree={portfolioTree}
           onFileClick={handleFileClick}
+          onQAClick={handleQAClick}
           selectedFileId={activeTabId}
           isOpen={sidebarOpen}
           onToggle={() => setSidebarOpen(!sidebarOpen)}
@@ -77,11 +102,16 @@ const Index = () => {
                 activeTabId={activeTabId}
                 onTabClick={setActiveTabId}
                 onTabClose={handleTabClose}
+                onSidebarToggle={() => setSidebarOpen(!sidebarOpen)}
               />
               
               {activeTab && (
                 <div className="flex-1 overflow-hidden">
-                  <CodeViewer content={activeTab.content} filename={activeTab.name} />
+                  {activeTab.type === 'file' ? (
+                    <CodeViewer content={activeTab.content} filename={activeTab.name} />
+                  ) : (
+                    <QAViewer qaItem={qaData.find(item => item.id === activeTab.id)!} />
+                  )}
                 </div>
               )}
             </>

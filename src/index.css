@@ -93,3 +93,52 @@ All colors MUST be HSL.
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
 }
+
+/* Social Links Custom Styling */
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .social-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.social-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 0.875rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  background: hsl(var(--vscode-tab-inactive));
+  color: #FFFFFF !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: hsl(var(--vscode-hover));
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  color: #FFFFFF !important;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.social-link span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+}

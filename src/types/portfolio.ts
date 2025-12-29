@@ -19,4 +19,5 @@ export interface OpenTab {
   id: string;
   name: string;
   content: string;
+  type: 'file' | 'qa';
 }

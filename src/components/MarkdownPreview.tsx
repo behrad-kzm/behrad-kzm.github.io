@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 interface MarkdownPreviewProps {
   content: string;
@@ -11,12 +12,24 @@ const MarkdownPreview = ({ content }: MarkdownPreviewProps) => {
       <div className="max-w-4xl mx-auto p-8">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
           components={{
-            h1: ({ children }) => (
-              <h1 className="text-4xl font-bold mb-6 text-foreground border-b border-vscode-border pb-4">
-                {children}
-              </h1>
-            ),
+            h1: ({ children }) => {
+              // Special handling for the main title to keep "S. Behrad Kazemi" together
+              const childText = String(children);
+              if (childText.includes("It's Me,")) {
+                return (
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-foreground border-b border-vscode-border pb-4">
+                    It's Me, <span className="inline-block">S. Behrad Kazemi</span>
+                  </h1>
+                );
+              }
+              return (
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-foreground border-b border-vscode-border pb-4">
+                  {children}
+                </h1>
+              );
+            },
             h2: ({ children }) => (
               <h2 className="text-3xl font-semibold mt-8 mb-4 text-foreground border-b border-vscode-border pb-2">
                 {children}
@@ -33,20 +46,35 @@ const MarkdownPreview = ({ content }: MarkdownPreviewProps) => {
               </h4>
             ),
             p: ({ children }) => (
-              <p className="mb-4 text-foreground/90 leading-relaxed">
+              <p className="mb-4 text-foreground/90 leading-relaxed text-justify">
                 {children}
               </p>
             ),
-            a: ({ href, children }) => (
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                {children}
-              </a>
-            ),
+            a: ({ href, children, className }) => {
+              // Don't apply default link styles to custom social links
+              if (className?.includes('social-link')) {
+                return (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {children}
+                  </a>
+                );
+              }
+              return (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  {children}
+                </a>
+              );
+            },
             ul: ({ children }) => (
               <ul className="list-disc list-inside mb-4 space-y-2 text-foreground/90">
                 {children}
@@ -89,7 +117,7 @@ const MarkdownPreview = ({ content }: MarkdownPreviewProps) => {
               <img
                 src={src}
                 alt={alt}
-                className="max-w-xs mx-auto my-6 rounded-lg"
+                className="w-48 sm:w-64 md:max-w-xs mx-auto my-6 rounded-full"
               />
             ),
             hr: () => (
@@ -97,25 +125,40 @@ const MarkdownPreview = ({ content }: MarkdownPreviewProps) => {
             ),
             table: ({ children }) => (
               <div className="overflow-x-auto my-4">
-                <table className="min-w-full border border-vscode-border">
+                <table className="min-w-full border border-vscode-border sm:table">
                   {children}
                 </table>
               </div>
             ),
             thead: ({ children }) => (
-              <thead className="bg-vscode-tabInactive">
+              <thead className="block sm:table-header-group">
                 {children}
               </thead>
             ),
+            tbody: ({ children }) => (
+              <tbody className="block sm:table-row-group">
+                {children}
+              </tbody>
+            ),
+            tr: ({ children }) => (
+              <tr className="block sm:table-row mb-2 sm:mb-0">
+                {children}
+              </tr>
+            ),
             th: ({ children }) => (
-              <th className="border border-vscode-border px-4 py-2 text-left font-semibold text-foreground">
+              <th className="border border-vscode-border px-4 py-2 text-left font-semibold text-foreground block sm:table-cell">
                 {children}
               </th>
             ),
             td: ({ children }) => (
-              <td className="border border-vscode-border px-4 py-2 text-foreground/90">
+              <td className="border border-vscode-border px-4 py-2 text-foreground/90 block sm:table-cell">
                 {children}
               </td>
+            ),
+            strong: ({ children }) => (
+              <strong className="text-white font-bold">
+                {children}
+              </strong>
             ),
           }}
         >
