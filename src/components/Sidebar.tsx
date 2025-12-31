@@ -19,12 +19,22 @@ const Sidebar = ({ tree, onFileClick, onQAClick, selectedFileId, isOpen, onToggl
 
   return (
     <>
-      {/* Icon Bar */}
-      <div className="fixed md:static top-0 left-0 h-full bg-vscode-sidebar border-r border-vscode-border flex z-40">
-        {/* Icon Navigation */}
-        <div className={`w-12 bg-[hsl(220,13%,9%)] border-r border-vscode-border flex flex-col items-center py-2 transition-transform duration-300 ${
+      {/* Overlay for mobile */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          onClick={onToggle}
+        />
+      )}
+
+      {/* Sidebar Container */}
+      <div 
+        className={`fixed md:static top-0 left-0 h-full bg-vscode-sidebar border-r border-vscode-border flex z-40 transition-transform duration-300 ${
           isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-        }`}>
+        }`}
+      >
+        {/* Icon Navigation */}
+        <div className="w-12 bg-[hsl(220,13%,9%)] border-r border-vscode-border flex flex-col items-center py-2">
           <button
             onClick={() => setActiveSection('explorer')}
             className={`w-12 h-12 flex items-center justify-center transition-colors ${
@@ -52,9 +62,7 @@ const Sidebar = ({ tree, onFileClick, onQAClick, selectedFileId, isOpen, onToggl
 
         {/* Content Panel */}
         <div
-          className={`bg-vscode-sidebar transition-transform duration-300 ${
-            isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-          }`}
+          className="bg-vscode-sidebar"
           style={{ width: '288px' }}
         >
           {/* Explorer Section */}
@@ -165,14 +173,6 @@ const Sidebar = ({ tree, onFileClick, onQAClick, selectedFileId, isOpen, onToggl
           )}
         </div>
       </div>
-
-      {/* Overlay for mobile */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 md:hidden"
-          onClick={onToggle}
-        />
-      )}
     </>
   );
 };

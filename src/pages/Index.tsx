@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Menu } from 'lucide-react';
 import { FileItem, OpenTab } from '@/types/portfolio';
 import { portfolioTree } from '@/data/portfolioData';
 import { qaData } from '@/data/qaData';
@@ -116,7 +117,13 @@ const Index = () => {
               )}
             </>
           ) : (
-            <div className="flex-1 flex items-center justify-center bg-vscode-editor">
+            <div className="flex-1 flex items-center justify-center bg-vscode-editor relative">
+              <button
+                className="absolute top-4 left-4 md:hidden p-2 text-muted-foreground hover:text-foreground hover:bg-vscode-hover rounded-md transition-colors"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+              >
+                <Menu className="w-6 h-6" />
+              </button>
               <div className="text-center">
                 <h2 className="text-2xl font-semibold mb-2 text-foreground">Portfolio Explorer</h2>
                 <p className="text-muted-foreground">Select a file from the sidebar to view its contents</p>
