@@ -4,9 +4,10 @@ import rehypeRaw from 'rehype-raw';
 
 interface MarkdownPreviewProps {
   content: string;
+  onInternalLinkClick?: (href: string) => void;
 }
 
-const MarkdownPreview = ({ content }: MarkdownPreviewProps) => {
+const MarkdownPreview = ({ content, onInternalLinkClick }: MarkdownPreviewProps) => {
   return (
     <div className="h-full overflow-auto bg-vscode-editor">
       <div className="max-w-4xl mx-auto p-8">
@@ -64,6 +65,25 @@ const MarkdownPreview = ({ content }: MarkdownPreviewProps) => {
                   </a>
                 );
               }
+              
+              // Handle internal action links
+              if (href?.startsWith('#action:')) {
+                return (
+                  <a
+                    href={href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (onInternalLinkClick) {
+                        onInternalLinkClick(href);
+                      }
+                    }}
+                    className="text-primary hover:underline cursor-pointer"
+                  >
+                    {children}
+                  </a>
+                );
+              }
+
               return (
                 <a
                   href={href}

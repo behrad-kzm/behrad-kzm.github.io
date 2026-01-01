@@ -111,19 +111,19 @@ Sharing knowledge and helping developers grow through educational content.
 
 ## 📂 Navigate My Portfolio
 
-### Files
+### [Files](#action:explorer)
 Explore the file tree to learn more about:
-- 📁 **experiences/** - My professional journey
-- 📁 **educations/** - Academic background
-- 📁 **licenses-certificates/** - Certifications and courses
-- 📁 **skills/** - Technical skills and content creation
+- 📁 [**experiences/**](#action:explorer) - My professional journey
+- 📁 [**educations/**](#action:explorer) - Academic background
+- 📁 [**licenses-certificates/**](#action:explorer) - Certifications and courses
+- 📁 [**skills/**](#action:explorer) - Technical skills and content creation
 
-### Q&A
+### [Q&A](#action:qa)
 Interview preparation and common questions:
-- 👔 **HR Questions** - Behavioral & situational questions
-- 💻 **Technical Questions** - System design & architecture
-- 👥 **Teamwork Questions** - Collaboration & communication
-- 🏆 **Code Challenges** - Coding problems & solutions
+- 👔 [**HR Questions**](#action:qa) - Behavioral & situational questions
+- 💻 [**Technical Questions**](#action:qa) - System design & architecture
+- 👥 [**Teamwork Questions**](#action:qa) - Collaboration & communication
+- 🏆 [**Code Challenges**](#action:qa) - Coding problems & solutions
 
 ---
 

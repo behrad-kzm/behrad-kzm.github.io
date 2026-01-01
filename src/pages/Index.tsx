@@ -13,6 +13,7 @@ const Index = () => {
   const [openTabs, setOpenTabs] = useState<OpenTab[]>([]);
   const [activeTabId, setActiveTabId] = useState<string>('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<'explorer' | 'qa'>('explorer');
 
   // Open README.md by default on mount
   useEffect(() => {
@@ -73,6 +74,17 @@ const Index = () => {
     }
   };
 
+  const handleInternalLinkClick = (href: string) => {
+    // Check for custom action links
+    if (href === '#action:explorer') {
+      setSidebarOpen(true);
+      setActiveSection('explorer');
+    } else if (href === '#action:qa') {
+      setSidebarOpen(true);
+      setActiveSection('qa');
+    }
+  };
+
   const activeTab = openTabs.find(tab => tab.id === activeTabId);
   const activeFile = activeTab ? {
     id: activeTab.id,
@@ -93,6 +105,8 @@ const Index = () => {
           selectedFileId={activeTabId}
           isOpen={sidebarOpen}
           onToggle={() => setSidebarOpen(!sidebarOpen)}
+          activeSection={activeSection}
+          onSectionChange={setActiveSection}
         />
         
         <div className="flex-1 flex flex-col min-w-0">
@@ -109,7 +123,11 @@ const Index = () => {
               {activeTab && (
                 <div className="flex-1 overflow-hidden">
                   {activeTab.type === 'file' ? (
-                    <CodeViewer content={activeTab.content} filename={activeTab.name} />
+                    <CodeViewer 
+                      content={activeTab.content} 
+                      filename={activeTab.name} 
+                      onInternalLinkClick={handleInternalLinkClick}
+                    />
                   ) : (
                     <QAViewer qaItem={qaData.find(item => item.id === activeTab.id)!} />
                   )}

@@ -5,6 +5,7 @@ import MarkdownPreview from './MarkdownPreview';
 interface CodeViewerProps {
   content: string;
   filename: string;
+  onInternalLinkClick?: (href: string) => void;
 }
 
 // Detect language from filename extension
@@ -41,12 +42,12 @@ const getLanguageFromFilename = (filename: string): string => {
   return languageMap[ext || ''] || 'typescript'; // default to typescript
 };
 
-const CodeViewer = ({ content, filename }: CodeViewerProps) => {
+const CodeViewer = ({ content, filename, onInternalLinkClick }: CodeViewerProps) => {
   const isMarkdown = filename.endsWith('.md');
   
   // If it's a markdown file, show preview
   if (isMarkdown) {
-    return <MarkdownPreview content={content} />;
+    return <MarkdownPreview content={content} onInternalLinkClick={onInternalLinkClick} />;
   }
   
   const language = getLanguageFromFilename(filename);

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Files, MessageCircleQuestion, UserCheck, Code, Users, Trophy } from 'lucide-react';
 import { TreeItem, FileItem } from '@/types/portfolio';
 import FileTree from './FileTree';
@@ -10,13 +9,22 @@ interface SidebarProps {
   selectedFileId?: string;
   isOpen: boolean;
   onToggle: () => void;
+  activeSection: 'explorer' | 'qa';
+  onSectionChange: (section: 'explorer' | 'qa') => void;
 }
 
 type SidebarSection = 'explorer' | 'qa';
 
-const Sidebar = ({ tree, onFileClick, onQAClick, selectedFileId, isOpen, onToggle }: SidebarProps) => {
-  const [activeSection, setActiveSection] = useState<SidebarSection>('explorer');
-
+const Sidebar = ({ 
+  tree, 
+  onFileClick, 
+  onQAClick, 
+  selectedFileId, 
+  isOpen, 
+  onToggle,
+  activeSection,
+  onSectionChange
+}: SidebarProps) => {
   return (
     <>
       {/* Overlay for mobile */}
@@ -36,7 +44,7 @@ const Sidebar = ({ tree, onFileClick, onQAClick, selectedFileId, isOpen, onToggl
         {/* Icon Navigation */}
         <div className="w-12 bg-[hsl(220,13%,9%)] border-r border-vscode-border flex flex-col items-center py-2">
           <button
-            onClick={() => setActiveSection('explorer')}
+            onClick={() => onSectionChange('explorer')}
             className={`w-12 h-12 flex items-center justify-center transition-colors ${
               activeSection === 'explorer'
                 ? 'text-white border-l-2 border-primary bg-vscode-hover'
@@ -48,7 +56,7 @@ const Sidebar = ({ tree, onFileClick, onQAClick, selectedFileId, isOpen, onToggl
           </button>
           
           <button
-            onClick={() => setActiveSection('qa')}
+            onClick={() => onSectionChange('qa')}
             className={`w-12 h-12 flex items-center justify-center transition-colors ${
               activeSection === 'qa'
                 ? 'text-white border-l-2 border-primary bg-vscode-hover'
