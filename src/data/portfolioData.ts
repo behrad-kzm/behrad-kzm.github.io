@@ -8,7 +8,7 @@ export const portfolioTree: TreeItem[] = [
     extension: 'md',
     content: `# It's Me, S. Behrad Kazemi
 
-![Profile Picture](https://avatars.githubusercontent.com/u/6783461?v=4)
+![Profile Picture](https://avatars.githubusercontent.com/u/6783461)
 
 ## 👨🏻‍💻 About Me
 
