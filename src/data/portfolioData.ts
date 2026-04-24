@@ -127,9 +127,8 @@ Interview preparation and common questions:
 
 ---
 
-## 🚀 Let's Build Something Amazing Together!
+## 🚀 Let's talk!
 
-I'm always interested in exciting projects and collaboration opportunities. 
 Feel free to reach out via email or connect with me on LinkedIn!
 
 ---
