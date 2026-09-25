@@ -26,7 +26,9 @@ const QAViewer = ({ qaItem }: QAViewerProps) => {
           {qaItem.questions.map((qa, index) => (
             <div key={index} className="pb-6 border-b border-vscode-border/50 last:border-0">
               <div className="mb-3">
-                <span className="text-sm font-semibold text-blue-400 uppercase tracking-wide">HR:</span>
+                <span className="text-sm font-semibold text-blue-400 uppercase tracking-wide">
+                  {qaItem.category === 'hr' ? 'HR:' : 'Interviewer:'}
+                </span>
                 <h3 className="text-lg font-medium text-white mt-1">{qa.question}</h3>
               </div>
               <div>

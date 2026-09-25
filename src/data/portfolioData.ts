@@ -12,14 +12,33 @@ export const portfolioTree: TreeItem[] = [
 
 ## 👨🏻‍💻 About Me
 
-I'm an experienced **Backend Engineer** with a strong foundation in backend development and system design, particularly for
-distributed systems under heavy load.
-My journey began with JavaScript and **Node.js**, building web applications using Express.js. As I advanced, I adopted **TypeScript**
-for its type safety and scalability, which led me to **NestJS**, a framework I now use extensively to design and manage complex,
-maintainable, and efficient backend systems.
-I'm also experienced with both SQL (**PostgreSQL**, **MySQL**) and NoSQL (**MongoDB**) databases, message queues (**Kafka**, **RabbitMQ**
-and **BullMQ**), cloud-native infrastructure (**Docker**, **Kubernetes**, **Azure**), Rest API design and **GraphQL** and have contributed to the **open-source** ecosystem by
-publishing npm packages.
+I build production **agentic systems**, after 10+ years on large-scale backends.
+I owned the architecture and delivery of **AIREOS**, an on-premise real-estate lead assistant: private LLMs on a **Mac Studio** cluster, **Google ADK**, a code coordinator with classifier / generator / composer / memory, **pgvector** over Dubai listings, WhatsApp and Telegram, plus an Electron desk against a local control API. A case-based prompt builder replaced one monolithic prompt and cut token use by ~50% on the LLM calls I compared, measured from Ollama's native usage fields.
+
+That work sits on a backend career in high-concurrency, distributed, real-time systems — microservices, **Kafka**, WebSockets, a 10,000-user community, and capacity we proved in k6 (about 500 RPS/pod, 2,000 connections/pod, ~25M notifications/day).
+
+I'm a **NestJS** contributor: /users/:id was able to steal /users/me. I landed conflict detection and specificity-based registration in NestJS Core v12 ([#16954](https://github.com/nestjs/nest/pull/16954)).
+
+---
+
+## 📂 Navigate My Portfolio
+
+### [Explorer](#action:explorer)
+Explore the file tree to learn more about:
+- 📁 [**experiences/**](#action:explorer) - My professional journey
+- 📁 [**educations/**](#action:explorer) - Academic background
+- 📁 [**licenses-certificates/**](#action:explorer) - Certifications and courses
+- 📁 [**skills/**](#action:explorer) - Technical skills and content creation
+
+### [Q&A](#action:qa)
+Interview questions I actually get — and how I answer them:
+- 👔 [**HR Questions**](#action:qa) - Behavioral & situational
+- 🤖 [**Red Rock — AIREOS**](#action:qa) - Chief AI Officer
+- 📡 [**Red Rock — Memeth**](#action:qa) - Senior Software Engineer
+- 🦷 [**Smile Link**](#action:qa) - Backend + iOS
+- 🔔 [**ZarinPal — Oppodax**](#action:qa) - Notifications
+- 📱 [**iOS years**](#action:qa) - Sibche, SpeedDeliv, Barandeh Bash
+- 🧩 [**NestJS Core**](#action:qa) - PR #16954
 
 ---
 
@@ -64,23 +83,23 @@ publishing npm packages.
 ## 💼 Overview
 
 ### Current Role
-**Senior Backend Developer @ RedRock**
-- Leading backend architecture for enterprise solutions
-- Managing development teams
-- Implementing scalable microservices
-- Architected real-time communication infrastructure utilizing WebRTC for video conferencing and instant messaging
+**Chief AI Officer @ Red Rock Technology**
+- Own AIREOS: on-prem lead assistant for buy / rent / sell / let
+- Code coordinator + specialist agents on Ollama, deployed on Mac Studio clusters
+- Electron desk talks only to the local agent process (Telegram + WhatsApp)
+- Previously Senior Software Engineer on Memeth (Mar 2025 – Mar 2026)
 
 ### Skill
-- **Backend:** Node.js, TypeScript, Python, Django
-- **Mobile:** Swift, iOS Development, SwiftUI
-- **Cloud:** AWS, Docker, Kubernetes
-- **Database:** PostgreSQL, MongoDB, Redis
-- **Message Queues:** Kafka, RabbitMQ, BulMQ
-- **API Design:** REST, GraphQL
+- **AI:** Google ADK, Agentic AI, LLM orchestration, Prompt engineering
+- **Backend:** Node.js, TypeScript, NestJS, Python
+- **Mobile:** Swift, RxSwift, UIKit
+- **Databases:** PostgreSQL, MongoDB, MySQL, Redis
+- **Message Queues:** Kafka, RabbitMQ, BullMQ
+- **Communication:** REST, GraphQL, Socket.IO, MediaSoup, MCP
 
 ### Education
-- **BEng in Computer Software Engineering**
-- Qazvin Islamic Azad University (2013-2024)
+- **MSc in Computer Engineering** — Beykent University, Istanbul (2026)
+- **BEng in Computer Engineering (Software)** — QIAU, Qazvin (2013–2024)
 
 ---
 
@@ -98,32 +117,14 @@ I run a tech-focused YouTube channel where I share:
 
 ## 🎯 What I Do
 
-### Backend Development
-Specializing in building robust, scalable backend systems with modern technologies and best practices.
+### Agentic Systems
+On-prem multi-agent platforms with private LLMs, Google ADK, RAG, and offline-first desktop delivery.
 
-### System Architecture
-Designing and implementing microservices architectures that scale.
+### Distributed Backends
+High-concurrency microservices, Kafka, and real-time systems for a 10,000-user community, with k6 capacity tests for feed, sockets, and notification fan-out.
 
 ### Technical Content
 Sharing knowledge and helping developers grow through educational content.
-
----
-
-## 📂 Navigate My Portfolio
-
-### [Files](#action:explorer)
-Explore the file tree to learn more about:
-- 📁 [**experiences/**](#action:explorer) - My professional journey
-- 📁 [**educations/**](#action:explorer) - Academic background
-- 📁 [**licenses-certificates/**](#action:explorer) - Certifications and courses
-- 📁 [**skills/**](#action:explorer) - Technical skills and content creation
-
-### [Q&A](#action:qa)
-Interview preparation and common questions:
-- 👔 [**HR Questions**](#action:qa) - Behavioral & situational questions
-- 💻 [**Technical Questions**](#action:qa) - System design & architecture
-- 👥 [**Teamwork Questions**](#action:qa) - Collaboration & communication
-- 🏆 [**Code Challenges**](#action:qa) - Coding problems & solutions
 
 ---
 
@@ -133,7 +134,7 @@ Feel free to reach out via email or connect with me on LinkedIn!
 
 ---
 
-*Last updated: 2025*`
+*Last updated: 2026*`
   },
   {
     id: 'experiences',
@@ -141,46 +142,126 @@ Feel free to reach out via email or connect with me on LinkedIn!
     type: 'folder',
     children: [
       {
-        id: 'senior-backend-redrock',
-        name: 'senior-backend.redrock.ts',
+        id: 'chief-ai-redrock',
+        name: 'chief-ai.redrock.ts',
         type: 'file',
         extension: 'ts',
-        content: `// Senior Backend Developer @ RedRock
-// 2025 - Present
+        content: `// Chief AI Officer @ Red Rock Technology
+// 2026 - Present
 
 interface Experience {
-  company: "RedRock";
-  position: "Senior Backend Developer";
-  period: "Mar 2025 - Present";
+  company: "Red Rock Technology FZ-LLC";
+  position: "Chief AI Officer";
+  period: "Mar 2026 - Present";
+  location: "Dubai, UAE";
+  project: "AIREOS - Agentic Real Estate Assistant";
+  team: "Product squad with CTO (backend), two frontend tracks, PM, and QA; company ~15 on redrock.io";
   responsibilities: [
-    "Contributed to the design and implementation of a recommendation system for a crypto-focused social media platform",
-    "Developed a personalized content delivery engine based on user behavior and crypto interests",
-    "Designed and implemented a fully distributed real-time chat system supporting private and group messaging and video/audio streaming similar to IG live",
-    "Collaborated with the team lead on backend architecture decisions with a focus on scalability and reliability",
-    "Produced system architecture diagrams and effort estimations for assigned backend components",
-    "Participated in peer reviews and worked closely with cross-functional teams to ensure platform alignment"
+    "Promoted into a newly created CAIO role when Red Rock moved from product backends into on-prem agentic systems; CEO and CTO asked me to own it because I already shipped both the agent and the client, not only APIs",
+    "Owned AIREOS: a single-process lead assistant. Client messages Telegram or WhatsApp; the machine waits until they stop typing, then runs one turn — understand, update the brief, write one reply",
+    "Designed a code coordinator (not an LLM router). Classifier emits a closed instruction set; generator applies it in code (brief, listing search, commitments); composer writes the reply; memory updates in parallel so the client is not blocked",
+    "Replaced one monolithic prompt with a prompt-builder child that picks a single case from the turn's decisions and facts. Compared Ollama native usage fields (prompt_eval_count) on the same traces and cut token use by ~50% on those calls, with fewer off-brief answers",
+    "Grounded buy/rent matching and community price ranges in a pgvector index of Dubai listings so users can price a unit against real community comps instead of model memory",
+    "Deployed Ollama and the agent on Mac Studio clusters the company sells to business clients; tenant memory is identity-scoped and enforced with PostgreSQL row-level security",
+    "Split the Electron desk from the agent daemon so UI and backend could ship in parallel against a local control API with fewer merge conflicts"
   ];
   technologies: [
     "Node.js",
     "TypeScript",
+    "Google ADK",
+    "Ollama",
     "PostgreSQL",
-    "Hasura",
-    "NestJS",
-    "REST API Design",
-    "GraphQL",
-    "WebSockets",
-    "Kafka",
-    "BullMQ",
-    "MongoDB",
-    "Redis",
-    "Microservices Architecture",
-    "Distributed Systems",
-    "MediaSoup",
-    "Real-Time Messaging"
+    "pgvector",
+    "Electron",
+    "RAG",
+    "Telegram",
+    "WhatsApp",
+    "Multi-Agent Orchestration"
   ];
 }
 
 export default Experience;`
+      },
+      {
+        id: 'senior-backend-redrock',
+        name: 'senior-swe.redrock.ts',
+        type: 'file',
+        extension: 'ts',
+        content: `// Senior Software Engineer @ Red Rock Technology
+// 2025 - 2026
+
+interface Experience {
+  company: "Red Rock Technology FZ-LLC";
+  position: "Senior Software Engineer";
+  period: "Mar 2025 - Mar 2026";
+  location: "Dubai, UAE";
+  project: "Memeth - Crypto Social Platform";
+  team: "3 senior backend engineers plus CTO / team lead";
+  owned: [
+    "legacy API — follow, user, auth (monolith we inherited)",
+    "chat",
+    "SFU (MediaSoup)",
+    "livestream",
+    "Cloudflare media / HLS",
+    "posts",
+    "feed"
+  ];
+  responsibilities: [
+    "One of three senior backend engineers on Memeth, working with the CTO / team lead — not the sole architect — on a NestJS platform for a 10,000-user crypto social community",
+    "Joined onto a legacy API that still held follow, user, and auth. After shipping on that codebase, we extracted the rest as microservices — chat, MediaSoup SFU, livestream, Cloudflare HLS, posts, and feed — and I owned those plus the old API",
+    "Feed path: the bottleneck was per-user triggers that rebuilt a follower's feed on each new post. Moved that work to Kafka consumers so the write path could return sooner, and used Redis Redlock where concurrent updates raced",
+    "k6 load tests (capacity, not live traffic): ~200 to ~500 RPS per single-core pod on the feed path; chat and notification fan-out designed and tested for ~2,000 WebSockets/pod and ~25M PUSH/SMS/EMAIL/day with Kafka and Redlock",
+    "Split live into two processes: a MediaSoup SFU hosted where many UDP/TCP ports can be opened for WebRTC, calling into a Kubernetes livestream service that owns permissions via Hasura and talks to the rest of the mesh — 150 viewers per room, more rooms by adding SFU pods",
+    "Built a Cloudflare HLS edge service (request-reply) so posts and chat could turn an S3 object into a CDN streamable URL. Cloudflare exposes one webhook for the ready HLS URL; this service is the single ingress for that callback"
+  ];
+  technologies: [
+    "NestJS",
+    "TypeScript",
+    "Kafka",
+    "Redis",
+    "MongoDB",
+    "Hasura",
+    "Socket.IO",
+    "MediaSoup",
+    "Cloudflare Stream / HLS",
+    "S3",
+    "WebSockets",
+    "Kubernetes",
+    "Request-Reply",
+    "Edge-Service",
+    "Strangler",
+    "Microservices Architecture",
+    "Distributed Systems"
+  ];
+}
+
+export default Experience;`
+      },
+      {
+        id: 'oss-nestjs',
+        name: 'oss.nestjs.ts',
+        type: 'file',
+        extension: 'ts',
+        content: `// OSS Contributor @ NestJS Core
+// May 2026
+// https://github.com/nestjs/nest/pull/16954
+
+interface Contribution {
+  project: "NestJS Core v12";
+  kind: "route conflict detection and specificity-based registration";
+  problem: [
+    "GET /users/:id and GET /users/me can shadow each other",
+    "Express/Fastify may send 'me' into the :id controller",
+    "Validation then rejects a legal reserved path as a bad UUID or number"
+  ];
+  change: [
+    "Detect conflicting route declarations at registration time",
+    "Register more specific static segments before parametric ones",
+    "Configurable policy: warn or fail in the console so the shadow is visible before production"
+  ];
+}
+
+export default Contribution;`
       },
       {
         id: 'backend-smilelink',
@@ -194,34 +275,29 @@ interface Experience {
   company: "SmileLink";
   position: "Backend Developer";
   period: "Jun 2023 - Jan 2025";
+  joinedAs: "Consultant — shipped the patient iOS app, then full-time backend after they raised sponsorship";
   responsibilities: [
-    "Built an appointment scheduling system integrating dental clinic front desk software with cloud services for real-time data synchronization",
-    "Integrated multiple Practice Management Systems (OpenDental, Dentrix, and others) with differing database structures",
-    "Implemented an edge-service pattern to normalize data, expose webhooks, and streamline onboarding of new PMS vendors",
-    "Designed rate-limited synchronization mechanisms to handle third-party API constraints without service disruption",
-    "Processed and cleansed inconsistent patient data and implemented logic to detect and merge duplicate or related records",
-    "Developed algorithms to identify primary patient records and link dependents, improving data accuracy and care management",
-    "Built a multi-doctor, multi-operatory appointment scheduling system to improve clinic efficiency",
-    "Developed a distributed event-driven notification system using SMS, email, and push notifications",
-    "Implemented two-way SMS messaging with server-side processing and admin dashboard visibility",
-    "Implemented end-to-end encrypted patient–provider chat in collaboration with frontend and mobile teams"
+    "Joined as a consultant and shipped the patient iOS app (Swift) alone — a thin booking client. After sponsorship they hired me full-time; I rebuilt the messy MVP backend from scratch so iOS, Android, and web could sit on one API",
+    "Most of the complexity was the backend: sync clinic front-desk software into a canonical store, then serve normalized patients and slots to every client",
+    "One edge service per PMS — OpenDental, Dentrix, Sikka — so a new vendor is a new adapter. Each edge pulls vendor-shaped data; the rest of the system only sees the lake / normalized model",
+    "Deduped patients on phone and email. Repeated numbers plus age were treated as a parent registering children — we linked dependents under the guardian instead of merging them into one person",
+    "Stopped double-booking the same operatory, doctor, and slot with Redis Redlock, database transactions, and an idempotency key on appointment create"
   ];
   technologies: [
     "Node.js",
     "NestJS",
-    "Appointment Scheduling Systems",
+    "Swift",
+    "UIKit",
     "MySQL",
-    "Azure Services",
-    "Azure Container Apps",
-    "Docker",
     "Redis",
-    "Twilio (Two-Way SMS)",
-    "SendGrid",
-    "Firebase Notifications",
+    "Redlock",
+    "Docker",
     "OpenDental",
     "Dentrix",
-    "Event-Driven Architecture",
-    "Data Normalization & Cleansing"
+    "Sikka",
+    "Edge-Service",
+    "Idempotency",
+    "Data Normalization"
   ];
 }
 
@@ -229,24 +305,22 @@ export default Experience;
 `
       },
       {
-        id: 'backend-oppodax',
-        name: 'backend.oppodax.ts',
+        id: 'backend-zarinpal',
+        name: 'backend.zarinpal.ts',
         type: 'file',
         extension: 'ts',
-        content: `// Backend Developer @ Oppodax
+        content: `// Backend Developer @ ZarinPal — Oppodax
 // 2019 - 2023
 
 interface Experience {
-  company: "Oppodax";
+  company: "ZarinPal";
+  project: "Oppodax";
   position: "Backend Developer";
   period: "Sep 2019 - Apr 2023";
   responsibilities: [
-    "Developed a scalable notification system handling thousands of notifications daily for over 30,000 active users",
-    "Built and maintained scalable backend services supporting high-traffic workloads",
-    "Streamlined API integrations by creating a centralized shared library, improving deployment speed and code consistency",
-    "Implemented real-time features and event-driven workflows for user-facing systems",
-    "Integrated observability and monitoring using OpenTelemetry and Grafana to provide real-time business and system metrics",
-    "Participated in code reviews and pair programming to improve code quality and team alignment"
+    "ZarinPal was the parent company; I joined the Oppodax team as a backend developer",
+    "Notification delays hit ~2 hours because a cron job ran a fixed batch size. I moved work onto a queue, read much larger batches, and spread processing across pods so two workers could not claim the same record",
+    "Added a metrics service that collected signals from the platform and exposed them with OpenTelemetry and Prometheus"
   ];
   technologies: [
     "NestJS",
@@ -256,7 +330,7 @@ interface Experience {
     "Docker",
     "Kubernetes",
     "OpenTelemetry",
-    "Grafana"
+    "Prometheus"
   ];
 }
 
@@ -268,32 +342,28 @@ export default Experience;
         name: 'senior-ios.bbshow.swift',
         type: 'file',
         extension: 'swift',
-        content: `// Senior iOS Developer @ Barandeh Bash Show
+        content: `// Senior iOS Developer @ Barandeh Bash
 // 2019
 
 import Foundation
 
 struct Experience {
-    let company = "Barandeh Bash Show"
+    let company = "Barandeh Bash"
     let position = "Senior iOS Developer"
     let period = "Jan 2019 - Aug 2019"
-    
+
     let responsibilities = [
-        "Led iOS development team",
-        "Architected app using MVVMC pattern with reactive programming",
-        "Implemented complex UI animations",
-        "Integrated video streaming features",
-        "Optimized app performance and memory usage"
+        "Built the in-app music player",
+        "Built a competitive quiz app to drive engagement",
+        "Crash work was part of the job — a fix showed up in the store metrics the same week"
     ]
-    
+
     let technologies = [
         "Swift",
         "UIKit",
         "RxSwift",
         "RxCocoa",
-        "Core Data",
-        "Combine",
-        "Socket.io",
+        "AVFoundation",
     ]
 }`
       },
@@ -311,55 +381,49 @@ struct Experience {
     let company = "SpeedDeliv"
     let position = "iOS Developer"
     let period = "Jan 2017 - Dec 2018"
-    
+
     let responsibilities = [
-        "Developed delivery tracking features",
-        "Implemented real-time location updates",
-        "Created intuitive user interface",
-        "Integrated push notifications",
-        "Worked with RESTful APIs"
+        "Built the delivery iOS app's real-time channel on XMPP — order and driver updates without polling the HTTP API",
+        "Delivery tracking and maps sat on top of that live session"
     ]
-    
+
     let technologies = [
         "Swift",
         "UIKit",
-        "MapKit",
         "XMPP",
-        "Google Map SDK",
+        "MapKit",
         "Core Location",
-        "Alamofire",
-        "Firebase"
     ]
 }`
       },
       {
-        id: 'intern-ios-sibche',
-        name: 'intern-ios.sibche.swift',
+        id: 'ios-sibche',
+        name: 'ios.sibche.swift',
         type: 'file',
         extension: 'swift',
-        content: `// iOS Developer Intern @ Sibche
+        content: `// iOS Developer @ Sibche
 // 2016 - 2017
 
 import Foundation
 
 struct Experience {
     let company = "Sibche"
-    let position = "iOS Developer Intern"
+    let position = "iOS Developer"
     let period = "Feb 2016 - Jan 2017"
-    
+
+    let product = "Iran-market iOS app store (Aptoide / Cydia class) — sideload apps the official App Store would not serve"
+
     let responsibilities = [
-        "Assisted in app development",
-        "Fixed bugs and implemented small features",
-        "Learned iOS best practices",
-        "Participated in daily standups",
-        "Contributed to code documentation"
+        "Worked on the main Sibche client: browse, install, and update unofficial apps for the Iran market",
+        "Built in-app VPN (NEVPNManager) so users could reach the store when the official App Store path was blocked",
+        "Crash fixes were the fastest feedback loop — a bad build blocked downloads for the whole market"
     ]
-    
+
     let technologies = [
         "Objective-C",
+        "Swift",
         "UIKit",
-        "Auto Layout",
-        "Git"
+        "NEVPNManager",
     ]
 }`
       },
@@ -405,28 +469,34 @@ public:
     type: 'folder',
     children: [
       {
-        id: 'beng-computer',
-        name: 'software-engineering.qiau.bch',
+        id: 'msc-computer',
+        name: 'computer-eng.beykent.msc',
         type: 'file',
         extension: 'md',
-        content: `# Bachelor of Engineering in Computer Software
-## Qazvin Islamic Azad University (QIAU)
-### 2013 - 2024
+        content: `# Master of Computer Engineering
+## Beykent University
+### Istanbul, Turkey • 2026
 
 ## About
-Comprehensive computer science and software engineering program focusing on:
-- Algorithm design and analysis
-- Data structures
-- Software architecture
-- Database systems
-- Operating systems
-- Computer networks
+Master of Computer Engineering at Beykent University in Istanbul, Turkey.`
+      },
+      {
+        id: 'beng-computer',
+        name: 'software-eng.qiau.bch',
+        type: 'file',
+        extension: 'md',
+        content: `# Bachelor of Computer Engineering (Software)
+## Qazvin Islamic Azad University (QIAU)
+### Qazvin, Iran • 2013 - 2024
+**Minor:** Software Engineering
+
+## About
+Computer engineering program with a software engineering minor, covering algorithms, systems, and applied robotics.
 
 ## Key Achievements
-- GPA: 3.7/4.0
-- Dean's List: 6 semesters
-- Final project: AI-powered recommendation system
-- Active member of Computer Science Club
+- RoboCup C++ developer representing the university internationally (Iran Open 2015, RoboCup China)
+- Reduced camera calibration time from 30–45 minutes to 10–15 minutes
+- Replaced the legacy B-Human field-line detection approach with a RANSAC-based boundary detection algorithm, reducing vision processing time by 80%
 
 ## Notable Courses
 - Advanced Programming
@@ -436,7 +506,7 @@ Comprehensive computer science and software engineering program focusing on:
 - Software Engineering
 - Computer Networks
 - Artificial Intelligence
-- Web Development`
+- Computer Vision`
       }
     ]
   },
@@ -520,52 +590,57 @@ This score demonstrates strong English proficiency suitable for:
         content: `# Technical Skills
 
 ## Programming Languages
-- **TypeScript/JavaScript** ⭐⭐⭐⭐⭐
+- **TypeScript / JavaScript** ⭐⭐⭐⭐⭐
 - **Swift** ⭐⭐⭐⭐⭐
 - **Python** ⭐⭐⭐⭐
 - **C++** ⭐⭐⭐⭐
-- **SQL** ⭐⭐⭐⭐
 
-## Backend Technologies
-- Node.js / Express.js
-- NestJS
-- REST API Design
-- GraphQL
-- WebSockets
-- Microservices Architecture
+## AI Skills
+- Google ADK
+- Agentic AI system design
+- LLM orchestration and workflow engineering
+- Prompt engineering
+- Loop engineering
+- Ollama
+- pgvector / RAG
 
-## iOS Development
-- Swift / SwiftUI
-- UIKit
-- Core Data
-- Combine
-- AVFoundation
-- MapKit / Core Location
-- Push Notifications
+## Microservice Design Patterns
+- CQRS
+- SAGA
+- 2PC
+- DLQ
+- Event-Driven Architecture
+- Request-Reply
+- Edge-Service
+- Strangler
+- Sidecar
 
-## Databases
+## Databases and Data Management
 - PostgreSQL
 - MongoDB
-- Redis
 - MySQL
-- SQLite
+- Redis
+- TypeORM
+- Mongoose
 
-## DevOps & Cloud
+## Message Queues
+- Kafka
+- RabbitMQ
+- BullMQ (Redis)
+
+## Communication Mechanisms
+- MCP Tools
+- RESTful APIs
+- Socket.IO
+- MediaSoup
+- GraphQL
+
+## Backend and Platform
+- Node.js
+- NestJS
+- Electron
 - Docker
-- Kubernetes
-- AWS (EC2, S3, Lambda, RDS)
-- Azure Services
-- CI/CD (GitHub Actions, Jenkins)
-- Nginx
-- Linux Administration
-
-## Tools & Others
-- Git / GitHub
-- Postman
-- Jira
-- Figma
-- Unit Testing (Jest, XCTest)
-- Agile/Scrum Methodology`
+- Kubernetes`
       },
       {
         id: 'podcast',

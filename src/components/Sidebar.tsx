@@ -1,5 +1,6 @@
-import { Files, MessageCircleQuestion, UserCheck, Code, Users, Trophy } from 'lucide-react';
+import { Files, MessageCircleQuestion, UserCheck, Building2 } from 'lucide-react';
 import { TreeItem, FileItem } from '@/types/portfolio';
+import { qaData } from '@/data/qaData';
 import FileTree from './FileTree';
 
 interface SidebarProps {
@@ -107,75 +108,34 @@ const Sidebar = ({
               </div>
               
               <div className="overflow-y-auto h-[calc(100%-49px)]">
-                {/* HR Questions */}
-                <button
-                  className="w-full flex items-start gap-3 px-4 py-3 hover:bg-vscode-hover transition-colors border-b border-vscode-border/50"
-                  onClick={() => {
-                    onQAClick('hr-questions');
-                    if (window.innerWidth < 768) {
-                      onToggle();
-                    }
-                  }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded flex items-center justify-center">
-                    <UserCheck className="w-6 h-6 text-blue-400" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <h3 className="text-sm font-medium text-foreground mb-1">HR Questions</h3>
-                    <p className="text-xs text-muted-foreground">Behavioral & situational questions</p>
-                  </div>
-                </button>
-
-                {/* Technical Questions */}
-                <button
-                  className="w-full flex items-start gap-3 px-4 py-3 hover:bg-vscode-hover transition-colors border-b border-vscode-border/50"
-                  onClick={() => {
-                    // onQAClick('technical-questions');
-                    // Coming soon
-                  }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-500/10 rounded flex items-center justify-center">
-                    <Code className="w-6 h-6 text-green-400" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <h3 className="text-sm font-medium text-foreground mb-1">Technical Questions</h3>
-                    <p className="text-xs text-muted-foreground">System design & architecture</p>
-                  </div>
-                </button>
-
-                {/* Teamwork Questions */}
-                <button
-                  className="w-full flex items-start gap-3 px-4 py-3 hover:bg-vscode-hover transition-colors border-b border-vscode-border/50"
-                  onClick={() => {
-                    // onQAClick('teamwork-questions');
-                    // Coming soon
-                  }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-purple-500/10 rounded flex items-center justify-center">
-                    <Users className="w-6 h-6 text-purple-400" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <h3 className="text-sm font-medium text-foreground mb-1">Teamwork Questions</h3>
-                    <p className="text-xs text-muted-foreground">Collaboration & communication</p>
-                  </div>
-                </button>
-
-                {/* Code Challenges */}
-                <button
-                  className="w-full flex items-start gap-3 px-4 py-3 hover:bg-vscode-hover transition-colors border-b border-vscode-border/50"
-                  onClick={() => {
-                    // onQAClick('code-challenges');
-                    // Coming soon
-                  }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-500/10 rounded flex items-center justify-center">
-                    <Trophy className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <h3 className="text-sm font-medium text-foreground mb-1">Code Challenges</h3>
-                    <p className="text-xs text-muted-foreground">Coding problems & solutions</p>
-                  </div>
-                </button>
+                {qaData.map((item) => {
+                  const isHr = item.category === 'hr';
+                  const Icon = isHr ? UserCheck : Building2;
+                  return (
+                    <button
+                      key={item.id}
+                      className="w-full flex items-start gap-3 px-4 py-3 hover:bg-vscode-hover transition-colors border-b border-vscode-border/50"
+                      onClick={() => {
+                        onQAClick(item.id);
+                        if (window.innerWidth < 768) {
+                          onToggle();
+                        }
+                      }}
+                    >
+                      <div
+                        className={`flex-shrink-0 w-12 h-12 rounded flex items-center justify-center ${
+                          isHr ? 'bg-blue-500/10' : 'bg-green-500/10'
+                        }`}
+                      >
+                        <Icon className={`w-6 h-6 ${isHr ? 'text-blue-400' : 'text-green-400'}`} />
+                      </div>
+                      <div className="flex-1 text-left">
+                        <h3 className="text-sm font-medium text-foreground mb-1">{item.title}</h3>
+                        <p className="text-xs text-muted-foreground">{item.subtitle}</p>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </>
           )}
