@@ -275,9 +275,8 @@ interface Experience {
   company: "SmileLink";
   position: "Backend Developer";
   period: "Jun 2023 - Jan 2025";
-  joinedAs: "Consultant — shipped the patient iOS app, then full-time backend after they raised sponsorship";
   responsibilities: [
-    "Joined as a consultant and shipped the patient iOS app (Swift) alone — a thin booking client. After sponsorship they hired me full-time; I rebuilt the messy MVP backend from scratch so iOS, Android, and web could sit on one API",
+    "Shipped the patient iOS MVP in Swift, then rebuilt the backend from scratch so iOS, Android, and web sat on one API",
     "Most of the complexity was the backend: sync clinic front-desk software into a canonical store, then serve normalized patients and slots to every client",
     "One edge service per PMS — OpenDental, Dentrix, Sikka — so a new vendor is a new adapter. Each edge pulls vendor-shaped data; the rest of the system only sees the lake / normalized model",
     "Deduped patients on phone and email. Repeated numbers plus age were treated as a parent registering children — we linked dependents under the guardian instead of merging them into one person",
