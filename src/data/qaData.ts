@@ -126,7 +126,7 @@ export const qaData: QAItem[] = [
     category: 'experience',
     title: 'Smile Link',
     subtitle: 'Backend Developer · Jun 2023 – Jan 2025',
-    description: 'Consultant first, then full-time backend. Dental PMS sync and scheduling.',
+    description: 'Full-time backend. Dental PMS sync and scheduling.',
     lastUpdate: 'Sep 2026',
     icon: '🦷',
     questions: [

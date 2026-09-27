@@ -307,6 +307,8 @@ export default Experience;`
 ## About
 I contributed **route conflict detection** and **specificity-based registration** to NestJS Core v12. The change shipped for both Express and Fastify.
 
+[![Open NestJS PR #16954](/nestjs-pr-contributors.png)](https://github.com/nestjs/nest/pull/16954)
+
 ---
 
 ## The problem

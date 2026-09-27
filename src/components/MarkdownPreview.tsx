@@ -89,7 +89,7 @@ const MarkdownPreview = ({ content, onInternalLinkClick }: MarkdownPreviewProps)
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:underline"
+                  className="inline-block text-primary hover:underline [&>img]:hover:opacity-90 [&>img]:transition-opacity"
                 >
                   {children}
                 </a>
@@ -133,13 +133,21 @@ const MarkdownPreview = ({ content, onInternalLinkClick }: MarkdownPreviewProps)
                 {children}
               </pre>
             ),
-            img: ({ src, alt }) => (
-              <img
-                src={src}
-                alt={alt}
-                className="w-48 sm:w-64 md:max-w-xs mx-auto my-6 rounded-full"
-              />
-            ),
+            img: ({ src, alt }) => {
+              const isPortrait =
+                alt === 'Profile Picture' || src?.includes('avatars.githubusercontent.com');
+              return (
+                <img
+                  src={src}
+                  alt={alt}
+                  className={
+                    isPortrait
+                      ? 'w-48 sm:w-64 md:max-w-xs mx-auto my-6 rounded-full'
+                      : 'mx-auto my-6 w-full max-w-sm sm:max-w-md rounded-xl border border-vscode-border hover:opacity-90 transition-opacity'
+                  }
+                />
+              );
+            },
             hr: () => (
               <hr className="my-8 border-vscode-border" />
             ),

@@ -25,10 +25,14 @@ const Index = () => {
   }, []);
 
   const handleFileClick = (file: FileItem) => {
-    // Check if tab is already open
     const existingTab = openTabs.find(tab => tab.id === file.id);
-    
+
     if (existingTab) {
+      setOpenTabs(openTabs.map(tab =>
+        tab.id === file.id
+          ? { ...tab, name: file.name, content: file.content }
+          : tab
+      ));
       setActiveTabId(file.id);
     } else {
       const newTab: OpenTab = {
