@@ -8,6 +8,7 @@ import TabBar from '@/components/TabBar';
 import CodeViewer from '@/components/CodeViewer';
 import QAViewer from '@/components/QAViewer';
 import StatusBar from '@/components/StatusBar';
+import IntroTour from '@/components/IntroTour';
 
 const Index = () => {
   const [openTabs, setOpenTabs] = useState<OpenTab[]>([]);
@@ -121,7 +122,7 @@ const Index = () => {
               />
               
               {activeTab && (
-                <div className="flex-1 overflow-hidden">
+                <div className="flex-1 overflow-hidden" data-tour="main-window">
                   {activeTab.type === 'file' ? (
                     <CodeViewer 
                       content={activeTab.content} 
@@ -135,7 +136,7 @@ const Index = () => {
               )}
             </>
           ) : (
-            <div className="flex-1 flex items-center justify-center bg-vscode-editor relative">
+            <div className="flex-1 flex items-center justify-center bg-vscode-editor relative" data-tour="main-window">
               <button
                 className="absolute top-4 left-4 md:hidden p-2 text-muted-foreground hover:text-foreground hover:bg-vscode-hover rounded-md transition-colors"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -153,6 +154,7 @@ const Index = () => {
 
       {/* Status bar */}
       <StatusBar activeFile={activeFile} />
+      <IntroTour onSidebarNeeded={setSidebarOpen} />
     </div>
   );
 };

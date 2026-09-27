@@ -43,7 +43,10 @@ const Sidebar = ({
         }`}
       >
         {/* Icon Navigation */}
-        <div className="w-12 bg-[hsl(220,13%,9%)] border-r border-vscode-border flex flex-col items-center py-2">
+        <div
+          data-tour="activity-bar"
+          className="w-12 bg-[hsl(220,13%,9%)] border-r border-vscode-border flex flex-col items-center py-2"
+        >
           <button
             onClick={() => onSectionChange('explorer')}
             className={`w-12 h-12 flex items-center justify-center transition-colors ${
@@ -71,6 +74,7 @@ const Sidebar = ({
 
         {/* Content Panel */}
         <div
+          data-tour="sidebar"
           className="bg-vscode-sidebar"
           style={{ width: '288px' }}
         >

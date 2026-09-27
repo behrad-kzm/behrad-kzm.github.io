@@ -17,7 +17,7 @@ const TabBar = ({ tabs, activeTabId, onTabClick, onTabClose, onSidebarToggle }: 
   };
 
   return (
-    <div className="flex items-center bg-vscode-tabInactive border-b border-vscode-border pl-2.5">
+    <div data-tour="tabbar" className="flex items-center bg-vscode-tabInactive border-b border-vscode-border pl-2.5">
       {/* Mobile hamburger button */}
       {onSidebarToggle && (
         <button

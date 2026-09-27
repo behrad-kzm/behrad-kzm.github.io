@@ -142,3 +142,12 @@ All colors MUST be HSL.
   color: #FFFFFF !important;
   text-transform: uppercase !important;
 }
+
+@keyframes tour-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-8px); }
+}
+
+.tour-finger {
+  animation: tour-nudge 0.8s ease-in-out infinite;
+}
