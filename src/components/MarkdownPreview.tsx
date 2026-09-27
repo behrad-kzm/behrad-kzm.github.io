@@ -1,6 +1,8 @@
+import { isValidElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import MermaidDiagram from './MermaidDiagram';
 
 interface MarkdownPreviewProps {
   content: string;
@@ -128,11 +130,22 @@ const MarkdownPreview = ({ content, onInternalLinkClick }: MarkdownPreviewProps)
                 </code>
               );
             },
-            pre: ({ children }) => (
-              <pre className="bg-vscode-tabInactive p-4 rounded my-4 overflow-x-auto">
-                {children}
-              </pre>
-            ),
+            pre: ({ children }) => {
+              const nodes = Array.isArray(children) ? children : [children];
+              const mermaidNode = nodes.find(
+                (node) =>
+                  isValidElement(node) &&
+                  String(node.props.className ?? '').includes('language-mermaid')
+              );
+              if (isValidElement(mermaidNode)) {
+                return <MermaidDiagram chart={String(mermaidNode.props.children ?? '')} />;
+              }
+              return (
+                <pre className="bg-vscode-tabInactive p-4 rounded my-4 overflow-x-auto">
+                  {children}
+                </pre>
+              );
+            },
             img: ({ src, alt }) => {
               const isPortrait =
                 alt === 'Profile Picture' || src?.includes('avatars.githubusercontent.com');

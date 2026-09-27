@@ -143,157 +143,101 @@ Feel free to reach out via email or connect with me on LinkedIn!
     children: [
       {
         id: 'chief-ai-redrock',
-        name: 'chief-ai.redrock.ts',
+        name: 'chief-ai.redrock.md',
         type: 'file',
-        extension: 'ts',
-        content: `// Chief AI Officer @ Red Rock Technology
-// 2026 - Present
+        extension: 'md',
+        content: `# Chief AI Officer
+## Red Rock Technology FZ-LLC
+### Mar 2026 – Present • Dubai, UAE
 
-interface Experience {
-  company: "Red Rock Technology FZ-LLC";
-  position: "Chief AI Officer";
-  period: "Mar 2026 - Present";
-  location: "Dubai, UAE";
-  project: "AIREOS - Agentic Real Estate Assistant";
-  team: \`Product squad with CTO (backend),
-    two frontend tracks, PM, and QA;
-    company ~15 on redrock.io\`;
-  responsibilities: [
-    \`Promoted into a newly created CAIO role
-    when Red Rock moved from product backends
-    into on-prem agentic systems; CEO and CTO
-    asked me to own it because I already shipped
-    both the agent and the client, not only APIs\`,
-    \`Owned AIREOS: a single-process lead
-    assistant. Client messages Telegram or
-    WhatsApp; the machine waits until they stop
-    typing, then runs one turn — understand,
-    update the brief, write one reply\`,
-    \`Designed a code coordinator (not an LLM
-    router). Classifier emits a closed instruction
-    set; generator applies it in code (brief,
-    listing search, commitments); composer writes
-    the reply; memory updates in parallel so the
-    client is not blocked\`,
-    \`Replaced one monolithic prompt with a
-    prompt-builder child that picks a single case
-    from the turn's decisions and facts. Compared
-    Ollama native usage fields (prompt_eval_count)
-    on the same traces and cut token use by ~50%
-    on those calls, with fewer off-brief answers\`,
-    \`Grounded buy/rent matching and community
-    price ranges in a pgvector index of Dubai
-    listings so users can price a unit against
-    real community comps instead of model memory\`,
-    \`Deployed Ollama and the agent on Mac
-    Studio clusters the company sells to business
-    clients; tenant memory is identity-scoped and
-    enforced with PostgreSQL row-level security\`,
-    \`Split the Electron desk from the agent
-    daemon so UI and backend could ship in
-    parallel against a local control API with
-    fewer merge conflicts\`
-  ];
-  technologies: [
-    "Node.js",
-    "TypeScript",
-    "Google ADK",
-    "Ollama",
-    "PostgreSQL",
-    "pgvector",
-    "Electron",
-    "RAG",
-    "Telegram",
-    "WhatsApp",
-    "Multi-Agent Orchestration"
-  ];
-}
+**Project:** AIREOS — Agentic Real Estate Assistant  
+**Team:** Product squad with CTO (backend), two frontend tracks, PM, and QA; company ~15 on [redrock.io](https://redrock.io)
 
-export default Experience;`
+---
+
+## What I did
+
+- Promoted into a newly created CAIO role when Red Rock moved from product backends into on-prem agentic systems. CEO and CTO asked me to own it because I already shipped both the agent and the client, not only APIs.
+- Owned AIREOS: a single-process lead assistant. Client messages Telegram or WhatsApp; the machine waits until they stop typing, then runs one turn — understand, update the brief, write one reply.
+- Designed a code coordinator (not an LLM router). Classifier emits a closed instruction set; generator applies it in code (brief, listing search, commitments); composer writes the reply; memory updates in parallel so the client is not blocked.
+- Replaced one monolithic prompt with a prompt-builder child that picks a single case from the turn's decisions and facts. Compared Ollama native usage fields (\`prompt_eval_count\`) on the same traces and cut token use by ~50% on those calls, with fewer off-brief answers.
+- Grounded buy/rent matching and community price ranges in a pgvector index of Dubai listings so users can price a unit against real community comps instead of model memory.
+- Deployed Ollama and the agent on Mac Studio clusters the company sells to business clients; tenant memory is identity-scoped and enforced with PostgreSQL row-level security.
+- Split the Electron desk from the agent daemon so UI and backend could ship in parallel against a local control API with fewer merge conflicts.
+
+---
+
+## Workflow
+
+\`\`\`mermaid
+flowchart TB
+  Inbound[inbound message]
+  Inbound --> Quiet[Wait until they stop typing]
+  Quiet --> Coordinator[coordinator]
+  Coordinator --> Classifier[message_classifier]
+  Classifier --> Generator
+  Coordinator -.-> Memory[memory]
+
+  subgraph promptLoop [ ]
+    direction LR
+    Evaluator[prompt evaluator]
+    Enhancer[prompt enhancer]
+    Generator[prompt generator]
+    Generator --> Evaluator
+    Evaluator --> Enhancer
+    Enhancer --> Generator
+  end
+
+  Generator --> PropertyRAG[property RAG]
+  PropertyRAG --> Generator
+  Generator --> Composer[message_composer]
+  Composer --> Outbound[outbound message]
+\`\`\`
+
+---
+
+## Technologies
+
+Node.js · TypeScript · Google ADK · Ollama · PostgreSQL · pgvector · Electron · RAG · Telegram · WhatsApp · Multi-agent orchestration`
       },
       {
         id: 'senior-backend-redrock',
-        name: 'senior-swe.redrock.ts',
+        name: 'senior-swe.redrock.md',
         type: 'file',
-        extension: 'ts',
-        content: `// Senior Software Engineer @ Red Rock Technology
-// 2025 - 2026
+        extension: 'md',
+        content: `# Senior Software Engineer
+## Red Rock Technology FZ-LLC
+### Mar 2025 – Mar 2026 • Dubai, UAE
 
-interface Experience {
-  company: "Red Rock Technology FZ-LLC";
-  position: "Senior Software Engineer";
-  period: "Mar 2025 - Mar 2026";
-  location: "Dubai, UAE";
-  project: "Memeth - Crypto Social Platform";
-  team: "3 senior backend engineers plus CTO / team lead";
-  owned: [
-    "legacy API — follow, user, auth (monolith we inherited)",
-    "chat",
-    "SFU (MediaSoup)",
-    "livestream",
-    "Cloudflare media / HLS",
-    "posts",
-    "feed"
-  ];
-  responsibilities: [
-    \`One of three senior backend engineers on
-    Memeth, working with the CTO / team lead —
-    not the sole architect — on a NestJS platform
-    for a 10,000-user crypto social community\`,
-    \`Joined onto a legacy API that still held
-    follow, user, and auth. After shipping on that
-    codebase, we extracted the rest as
-    microservices — chat, MediaSoup SFU,
-    livestream, Cloudflare HLS, posts, and feed —
-    and I owned those plus the old API\`,
-    \`Feed path: the bottleneck was per-user
-    triggers that rebuilt a follower's feed on
-    each new post. Moved that work to Kafka
-    consumers so the write path could return
-    sooner, and used Redis Redlock where
-    concurrent updates raced\`,
-    \`k6 load tests (capacity, not live traffic):
-    ~200 to ~500 RPS per single-core pod on the
-    feed path; chat and notification fan-out
-    designed and tested for ~2,000 WebSockets/pod
-    and ~25M PUSH/SMS/EMAIL/day with Kafka and
-    Redlock\`,
-    \`Split live into two processes: a MediaSoup
-    SFU hosted where many UDP/TCP ports can be
-    opened for WebRTC, calling into a Kubernetes
-    livestream service that owns permissions via
-    Hasura and talks to the rest of the mesh —
-    150 viewers per room, more rooms by adding
-    SFU pods\`,
-    \`Built a Cloudflare HLS edge service
-    (request-reply) so posts and chat could turn
-    an S3 object into a CDN streamable URL.
-    Cloudflare exposes one webhook for the ready
-    HLS URL; this service is the single ingress
-    for that callback\`
-  ];
-  technologies: [
-    "NestJS",
-    "TypeScript",
-    "Kafka",
-    "Redis",
-    "MongoDB",
-    "Hasura",
-    "Socket.IO",
-    "MediaSoup",
-    "Cloudflare Stream / HLS",
-    "S3",
-    "WebSockets",
-    "Kubernetes",
-    "Request-Reply",
-    "Edge-Service",
-    "Strangler",
-    "Microservices Architecture",
-    "Distributed Systems"
-  ];
-}
+**Project:** Memeth — Crypto social platform  
+**Team:** 3 senior backend engineers plus CTO / team lead
 
-export default Experience;`
+### Owned
+
+- legacy API (follow, user, auth)
+- chat
+- SFU (MediaSoup)
+- livestream
+- Cloudflare media / HLS
+- posts
+- feed
+
+---
+
+## What I did
+
+- One of three senior backend engineers on Memeth, working with the CTO / team lead — not the sole architect — on a NestJS platform for a 10,000-user crypto social community.
+- Joined onto a legacy API that still held follow, user, and auth. After shipping on that codebase, we extracted the rest as microservices — chat, MediaSoup SFU, livestream, Cloudflare HLS, posts, and feed — and I owned those plus the old API.
+- Feed path: the bottleneck was per-user triggers that rebuilt a follower's feed on each new post. Moved that work to Kafka consumers so the write path could return sooner, and used Redis Redlock where concurrent updates raced.
+- k6 load tests (capacity, not live traffic): ~200 to ~500 RPS per single-core pod on the feed path; chat and notification fan-out designed and tested for ~2,000 WebSockets/pod and ~25M PUSH/SMS/EMAIL/day with Kafka and Redlock.
+- Split live into two processes: a MediaSoup SFU hosted where many UDP/TCP ports can be opened for WebRTC, calling into a Kubernetes livestream service that owns permissions via Hasura and talks to the rest of the mesh — 150 viewers per room, more rooms by adding SFU pods.
+- Built a Cloudflare HLS edge service (request-reply) so posts and chat could turn an S3 object into a CDN streamable URL. Cloudflare exposes one webhook for the ready HLS URL; this service is the single ingress for that callback.
+
+---
+
+## Technologies
+
+NestJS · TypeScript · Kafka · Redis · MongoDB · Hasura · Socket.IO · MediaSoup · Cloudflare Stream / HLS · S3 · WebSockets · Kubernetes · Request-Reply · Edge-Service · Strangler · Microservices`
       },
       {
         id: 'oss-nestjs',
@@ -339,257 +283,148 @@ Order is the runtime fix. Detection is why it does not regress when someone adds
       },
       {
         id: 'backend-smilelink',
-        name: 'backend.smilelink.ts',
+        name: 'backend.smilelink.md',
         type: 'file',
-        extension: 'ts',
-        content: `// Backend Developer @ SmileLink
-// 2023 - 2025
+        extension: 'md',
+        content: `# Backend Developer
+## SmileLink
+### Jun 2023 – Jan 2025
 
-interface Experience {
-  company: "SmileLink";
-  position: "Backend Developer";
-  period: "Jun 2023 - Jan 2025";
-  responsibilities: [
-    \`Shipped the patient iOS MVP in Swift, then
-    rebuilt the backend from scratch so iOS,
-    Android, and web sat on one API\`,
-    \`Most of the complexity was the backend:
-    sync clinic front-desk software into a
-    canonical store, then serve normalized
-    patients and slots to every client\`,
-    \`One edge service per PMS — OpenDental,
-    Dentrix, Sikka — so a new vendor is a new
-    adapter. Each edge pulls vendor-shaped data;
-    the rest of the system only sees the lake /
-    normalized model\`,
-    \`Deduped patients on phone and email.
-    Repeated numbers plus age were treated as a
-    parent registering children — we linked
-    dependents under the guardian instead of
-    merging them into one person\`,
-    \`Stopped double-booking the same operatory,
-    doctor, and slot with Redis Redlock, database
-    transactions, and an idempotency key on
-    appointment create\`
-  ];
-  technologies: [
-    "Node.js",
-    "NestJS",
-    "Swift",
-    "UIKit",
-    "MySQL",
-    "Redis",
-    "Redlock",
-    "Docker",
-    "OpenDental",
-    "Dentrix",
-    "Sikka",
-    "Edge-Service",
-    "Idempotency",
-    "Data Normalization"
-  ];
-}
+---
 
-export default Experience;
-`
+## What I did
+
+- Shipped the patient iOS MVP in Swift, then rebuilt the backend from scratch so iOS, Android, and web sat on one API.
+- Most of the complexity was the backend: sync clinic front-desk software into a canonical store, then serve normalized patients and slots to every client.
+- One edge service per PMS — OpenDental, Dentrix, Sikka — so a new vendor is a new adapter. Each edge pulls vendor-shaped data; the rest of the system only sees the lake / normalized model.
+- Deduped patients on phone and email. Repeated numbers plus age were treated as a parent registering children — we linked dependents under the guardian instead of merging them into one person.
+- Stopped double-booking the same operatory, doctor, and slot with Redis Redlock, database transactions, and an idempotency key on appointment create.
+
+---
+
+## Technologies
+
+Node.js · NestJS · Swift · UIKit · MySQL · Redis · Redlock · Docker · OpenDental · Dentrix · Sikka · Edge-Service · Idempotency · Data normalization`
       },
       {
         id: 'backend-zarinpal',
-        name: 'backend.zarinpal.ts',
+        name: 'backend.zarinpal.md',
         type: 'file',
-        extension: 'ts',
-        content: `// Backend Developer @ ZarinPal — Oppodax
-// 2019 - 2023
+        extension: 'md',
+        content: `# Backend Developer
+## ZarinPal — Oppodax
+### Sep 2019 – Apr 2023
 
-interface Experience {
-  company: "ZarinPal";
-  project: "Oppodax";
-  position: "Backend Developer";
-  period: "Sep 2019 - Apr 2023";
-  responsibilities: [
-    \`ZarinPal was the parent company; I joined
-    the Oppodax team as a backend developer\`,
-    \`Notification delays hit ~2 hours because a
-    cron job ran a fixed batch size. I moved work
-    onto a queue, read much larger batches, and
-    spread processing across pods so two workers
-    could not claim the same record\`,
-    \`Added a metrics service that collected
-    signals from the platform and exposed them
-    with OpenTelemetry and Prometheus\`
-  ];
-  technologies: [
-    "NestJS",
-    "MySQL",
-    "Redis",
-    "RabbitMQ",
-    "Docker",
-    "Kubernetes",
-    "OpenTelemetry",
-    "Prometheus"
-  ];
-}
+---
 
-export default Experience;
-`
+## What I did
+
+- ZarinPal was the parent company; I joined the Oppodax team as a backend developer.
+- Notification delays hit ~2 hours because a cron job ran a fixed batch size. I moved work onto a queue, read much larger batches, and spread processing across pods so two workers could not claim the same record.
+- Added a metrics service that collected signals from the platform and exposed them with OpenTelemetry and Prometheus.
+
+---
+
+## Technologies
+
+NestJS · MySQL · Redis · RabbitMQ · Docker · Kubernetes · OpenTelemetry · Prometheus`
       },
       {
         id: 'senior-ios-bbshow',
-        name: 'senior-ios.bbshow.swift',
+        name: 'senior-ios.bbshow.md',
         type: 'file',
-        extension: 'swift',
-        content: `// Senior iOS Developer @ Barandeh Bash
-// 2019
+        extension: 'md',
+        content: `# Senior iOS Developer
+## Barandeh Bash
+### Jan 2019 – Aug 2019
 
-import Foundation
+---
 
-struct Experience {
-    let company = "Barandeh Bash"
-    let position = "Senior iOS Developer"
-    let period = "Jan 2019 - Aug 2019"
+## What I did
 
-    let responsibilities = [
-        "Built the in-app music player",
-        """
-        Built a competitive quiz app
-        to drive engagement
-        """,
-        """
-        Crash work was part of the job —
-        a fix showed up in the store
-        metrics the same week
-        """
-    ]
+- Built the in-app music player.
+- Built a competitive quiz app to drive engagement.
+- Crash work was part of the job — a fix showed up in the store metrics the same week.
 
-    let technologies = [
-        "Swift",
-        "UIKit",
-        "RxSwift",
-        "RxCocoa",
-        "AVFoundation",
-    ]
-}`
+---
+
+## Technologies
+
+Swift · UIKit · RxSwift · RxCocoa · AVFoundation`
       },
       {
         id: 'ios-speeddeliv',
-        name: 'ios.speeddeliv.swift',
+        name: 'ios.speeddeliv.md',
         type: 'file',
-        extension: 'swift',
-        content: `// iOS Developer @ SpeedDeliv
-// 2017 - 2018
+        extension: 'md',
+        content: `# iOS Developer
+## SpeedDeliv
+### Jan 2017 – Dec 2018
 
-import Foundation
+---
 
-struct Experience {
-    let company = "SpeedDeliv"
-    let position = "iOS Developer"
-    let period = "Jan 2017 - Dec 2018"
+## What I did
 
-    let responsibilities = [
-        """
-        Built the delivery iOS app's
-        real-time channel on XMPP —
-        order and driver updates without
-        polling the HTTP API
-        """,
-        """
-        Delivery tracking and maps sat
-        on top of that live session
-        """
-    ]
+- Built the delivery iOS app's real-time channel on XMPP — order and driver updates without polling the HTTP API.
+- Delivery tracking and maps sat on top of that live session.
 
-    let technologies = [
-        "Swift",
-        "UIKit",
-        "XMPP",
-        "MapKit",
-        "Core Location",
-    ]
-}`
+---
+
+## Technologies
+
+Swift · UIKit · XMPP · MapKit · Core Location`
       },
       {
         id: 'ios-sibche',
-        name: 'ios.sibche.swift',
+        name: 'ios.sibche.md',
         type: 'file',
-        extension: 'swift',
-        content: `// iOS Developer @ Sibche
-// 2016 - 2017
+        extension: 'md',
+        content: `# iOS Developer
+## Sibche
+### Feb 2016 – Jan 2017
 
-import Foundation
+**Product:** Iran-market iOS app store (Aptoide / Cydia class) — sideload apps the official App Store would not serve
 
-struct Experience {
-    let company = "Sibche"
-    let position = "iOS Developer"
-    let period = "Feb 2016 - Jan 2017"
+---
 
-    let product = """
-        Iran-market iOS app store
-        (Aptoide / Cydia class) —
-        sideload apps the official
-        App Store would not serve
-        """
+## What I did
 
-    let responsibilities = [
-        """
-        Worked on the main Sibche client:
-        browse, install, and update
-        unofficial apps for the Iran market
-        """,
-        """
-        Built in-app VPN (NEVPNManager)
-        so users could reach the store
-        when the official App Store
-        path was blocked
-        """,
-        """
-        Crash fixes were the fastest
-        feedback loop — a bad build
-        blocked downloads for the
-        whole market
-        """
-    ]
+- Worked on the main Sibche client: browse, install, and update unofficial apps for the Iran market.
+- Built in-app VPN (NEVPNManager) so users could reach the store when the official App Store path was blocked.
+- Crash fixes were the fastest feedback loop — a bad build blocked downloads for the whole market.
 
-    let technologies = [
-        "Objective-C",
-        "Swift",
-        "UIKit",
-        "NEVPNManager",
-    ]
-}`
+---
+
+## Technologies
+
+Objective-C · Swift · UIKit · NEVPNManager`
       },
       {
         id: 'robocup',
-        name: 'robocup.cpp',
+        name: 'robocup.md',
         type: 'file',
-        extension: 'cpp',
-        content: `// RoboCup Team Member
-// 2014 - 2017
+        extension: 'md',
+        content: `# RoboCup Team Member
+## University RoboCup Team
+### Aug 2014 – Nov 2017
 
-#include <iostream>
-#include <vector>
+**Role:** Software Developer
 
-class RoboCupExperience {
-public:
-    std::string team = "University RoboCup Team";
-    std::string role = "Software Developer";
-    std::string period = "Aug2014 - Nov 2017";
-    
-    std::vector<std::string> responsibilities = {
-        "Developed robot control algorithms",
-        "Implemented computer vision for object detection",
-        "Programmed autonomous navigation systems",
-        "Collaborated in international competitions",
-        "Optimized real-time decision making"
-    };
-    
-    std::vector<std::string> technologies = {
-        "C++",
-        "OpenCV",
-        "Nao Robots",
-        "BHuman framework",
-        "Debian",
-    };
-};`
+---
+
+## What I did
+
+- Developed robot control algorithms.
+- Implemented computer vision for object detection.
+- Programmed autonomous navigation systems.
+- Collaborated in international competitions.
+- Optimized real-time decision making.
+
+---
+
+## Technologies
+
+C++ · OpenCV · Nao Robots · BHuman framework · Debian`
       }
     ]
   },
