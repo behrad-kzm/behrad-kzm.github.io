@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-const STORAGE_KEY = 'portfolio-intro-complete';
+const MENU_STEP = {
+  id: 'menu-button',
+  title: 'Sidebar menu',
+  description:
+    'Tap this button to open the sidebar. From there you can browse folders, experiences, and Q&A.',
+} as const;
 
 const STEPS = [
   {
@@ -29,7 +34,14 @@ const STEPS = [
   },
 ] as const;
 
-type StepId = (typeof STEPS)[number]['id'];
+type Step = typeof MENU_STEP | (typeof STEPS)[number];
+type StepId = Step['id'];
+
+const isMenuStep = (id: StepId) => id === 'menu-button';
+
+function getSteps(isMobile: boolean): Step[] {
+  return isMobile ? [MENU_STEP, ...STEPS] : [...STEPS];
+}
 
 interface IntroTourProps {
   onSidebarNeeded?: (open: boolean) => void;
@@ -38,6 +50,7 @@ interface IntroTourProps {
 const PAD = 6;
 const CARD_WIDTH = 320;
 const CARD_GAP = 16;
+const FINGER_ROOM = 56;
 
 const needsSidebar = (id: StepId) => id === 'activity-bar' || id === 'sidebar';
 
@@ -45,13 +58,24 @@ const IntroTour = ({ onSidebarNeeded }: IntroTourProps) => {
   const [stepIndex, setStepIndex] = useState(0);
   const [visible, setVisible] = useState(false);
   const [rect, setRect] = useState<DOMRect | null>(null);
+  const [fingerRect, setFingerRect] = useState<DOMRect | null>(null);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < 768
+  );
 
-  const step = STEPS[stepIndex];
+  const steps = getSteps(isMobile);
+  const step = steps[Math.min(stepIndex, steps.length - 1)];
 
   useEffect(() => {
-    if (localStorage.getItem(STORAGE_KEY)) return;
     const timer = window.setTimeout(() => setVisible(true), 400);
     return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const sync = () => setIsMobile(mq.matches);
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
   }, []);
 
   useEffect(() => {
@@ -69,6 +93,8 @@ const IntroTour = ({ onSidebarNeeded }: IntroTourProps) => {
       const el = document.querySelector(`[data-tour="${step.id}"]`);
       if (el && !cancelled) {
         setRect(el.getBoundingClientRect());
+        const anchor = document.querySelector(`[data-tour-finger="${step.id}"]`);
+        setFingerRect(anchor ? anchor.getBoundingClientRect() : null);
         return true;
       }
       return false;
@@ -98,14 +124,14 @@ const IntroTour = ({ onSidebarNeeded }: IntroTourProps) => {
   }, [visible, step.id]);
 
   const finish = () => {
-    localStorage.setItem(STORAGE_KEY, '1');
     setVisible(false);
     setRect(null);
+    setFingerRect(null);
     onSidebarNeeded?.(false);
   };
 
   const handleNext = () => {
-    if (stepIndex >= STEPS.length - 1) {
+    if (stepIndex >= steps.length - 1) {
       finish();
       return;
     }
@@ -124,7 +150,16 @@ const IntroTour = ({ onSidebarNeeded }: IntroTourProps) => {
       }
     : null;
 
-  const card = highlight ? placeCard(highlight) : null;
+  const isDesktopMain = !isMobile && step.id === 'main-window';
+  const fingerAlign: 'top' | 'center' | 'below' | 'left' = isDesktopMain
+    ? 'left'
+    : step.id === 'activity-bar'
+      ? 'top'
+      : step.id === 'tabbar' || isMenuStep(step.id)
+        ? 'below'
+        : 'center';
+  const finger = highlight ? fingerStyle(highlight, fingerAlign, fingerRect) : null;
+  const card = highlight ? keepCardOffFinger(placeCard(highlight, step.id, isMobile), finger) : null;
 
   return (
     <div
@@ -148,11 +183,17 @@ const IntroTour = ({ onSidebarNeeded }: IntroTourProps) => {
 
       {highlight && (
         <div
-          className="tour-finger pointer-events-none absolute text-4xl leading-none drop-shadow-md"
-          style={fingerStyle(highlight, card)}
+          className={`pointer-events-none absolute z-[72] text-4xl leading-none drop-shadow-md ${
+            isDesktopMain
+              ? 'tour-finger-right'
+              : step.id === 'tabbar' || isMenuStep(step.id)
+                ? 'tour-finger-up'
+                : 'tour-finger'
+          }`}
+          style={finger ?? undefined}
           aria-hidden
         >
-          👈🏻
+          {isDesktopMain ? '👉🏻' : step.id === 'tabbar' || isMenuStep(step.id) ? '👆🏻' : '👈🏻'}
         </div>
       )}
 
@@ -162,7 +203,7 @@ const IntroTour = ({ onSidebarNeeded }: IntroTourProps) => {
           style={{ top: card.top, left: card.left, width: card.width }}
         >
           <p className="mb-1 text-xs text-muted-foreground">
-            {stepIndex + 1} / {STEPS.length}
+            {stepIndex + 1} / {steps.length}
           </p>
           <h2 id="intro-tour-title" className="mb-2 text-base font-semibold text-foreground">
             {step.title}
@@ -184,32 +225,70 @@ const IntroTour = ({ onSidebarNeeded }: IntroTourProps) => {
   );
 };
 
-function placeCard(highlight: { top: number; left: number; width: number; height: number }) {
+function placeCard(
+  highlight: { top: number; left: number; width: number; height: number },
+  stepId: StepId,
+  isMobile: boolean
+) {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
+  const estimatedHeight = 240;
+  const belowIcons = highlight.top + 128;
+
+  if (!isMobile && stepId === 'main-window') {
+    const width = Math.min(CARD_WIDTH, Math.max(200, highlight.left - 32));
+    return {
+      top: clamp(highlight.top + 16, 16, vh - estimatedHeight - 16),
+      left: 16,
+      width,
+    };
+  }
+
+  if (stepId === 'activity-bar') {
+    const left = highlight.left + highlight.width + 12;
+    const width = Math.min(CARD_WIDTH, Math.max(220, vw - left - 16));
+    return {
+      top: clamp(belowIcons, 16, vh - estimatedHeight - 16),
+      left: clamp(left, 16, vw - width - 16),
+      width,
+    };
+  }
+
+  if (stepId === 'sidebar' && isMobile) {
+    const width = Math.min(CARD_WIDTH, vw - 32);
+    return {
+      top: vh - estimatedHeight - 24,
+      left: 16,
+      width,
+    };
+  }
+
   const width = Math.min(CARD_WIDTH, vw - 32);
-  const estimatedHeight = 200;
   const rightSpace = vw - (highlight.left + highlight.width);
   const leftSpace = highlight.left;
+  const tallTarget = highlight.height > vh * 0.5;
+  const alignedTop = tallTarget
+    ? clamp(belowIcons, 16, vh - estimatedHeight - 16)
+    : clamp(highlight.top, 16, vh - estimatedHeight - 16);
 
   let left: number;
   let top: number;
 
-  if (rightSpace >= width + CARD_GAP + 16) {
-    left = highlight.left + highlight.width + CARD_GAP;
-    top = clamp(highlight.top, 16, vh - estimatedHeight - 16);
+  if (rightSpace >= width + FINGER_ROOM + 16) {
+    left = highlight.left + highlight.width + FINGER_ROOM;
+    top = alignedTop;
   } else if (leftSpace >= width + CARD_GAP + 16) {
     left = highlight.left - CARD_GAP - width;
-    top = clamp(highlight.top, 16, vh - estimatedHeight - 16);
-  } else if (highlight.top + highlight.height + CARD_GAP + estimatedHeight < vh) {
+    top = alignedTop;
+  } else if (highlight.top + highlight.height + FINGER_ROOM + estimatedHeight < vh) {
     left = clamp(highlight.left, 16, vw - width - 16);
-    top = highlight.top + highlight.height + CARD_GAP;
+    top = highlight.top + highlight.height + FINGER_ROOM;
   } else if (highlight.top > estimatedHeight + CARD_GAP) {
     left = clamp(highlight.left, 16, vw - width - 16);
     top = highlight.top - estimatedHeight - CARD_GAP;
   } else {
-    left = Math.max(16, (vw - width) / 2);
-    top = Math.max(16, vh - estimatedHeight - 16);
+    left = clamp(highlight.left + 16, 16, vw - width - 16);
+    top = clamp(belowIcons, 16, vh - estimatedHeight - 16);
   }
 
   return { top, left, width };
@@ -217,21 +296,65 @@ function placeCard(highlight: { top: number; left: number; width: number; height
 
 function fingerStyle(
   highlight: { top: number; left: number; width: number; height: number },
-  card: { top: number; left: number; width: number } | null
+  align: 'top' | 'center' | 'below' | 'left',
+  anchor: DOMRect | null
 ) {
   const size = 36;
-  const midY = highlight.top + highlight.height / 2 - size / 2;
-  const rightOfTarget = highlight.left + highlight.width + 8;
+  const target = anchor
+    ? { top: anchor.top, left: anchor.left, width: anchor.width, height: anchor.height }
+    : highlight;
   const vw = window.innerWidth;
 
-  if (card && card.left >= highlight.left + highlight.width && rightOfTarget + size < vw) {
-    return { top: clamp(midY, highlight.top, highlight.top + highlight.height - size), left: rightOfTarget };
+  if (align === 'left') {
+    return {
+      top: clamp(target.top + 72, highlight.top, highlight.top + highlight.height - size),
+      left: target.left + 8,
+    };
   }
 
+  if (align === 'below') {
+    return {
+      top: target.top + target.height + 4,
+      left: clamp(target.left + target.width / 2 - size / 2, 8, vw - size - 8),
+    };
+  }
+
+  const fingerY =
+    align === 'top'
+      ? target.top + 44
+      : target.top + target.height / 2 - size / 2;
+  const rightOfTarget = target.left + target.width + 8;
+
   return {
-    top: highlight.top + 12,
-    left: clamp(highlight.left + highlight.width - size - 8, 8, vw - size - 8),
+    top: clamp(fingerY, highlight.top, highlight.top + highlight.height - size),
+    left: clamp(rightOfTarget, highlight.left, vw - size - 8),
   };
+}
+
+function keepCardOffFinger(
+  card: { top: number; left: number; width: number },
+  finger: { top: number; left: number } | null
+) {
+  if (!finger) return card;
+  const size = 40;
+  const gap = 20;
+  const estimatedHeight = 240;
+  const overlapsX =
+    card.left < finger.left + size + gap && card.left + card.width > finger.left - gap;
+  const overlapsY =
+    card.top < finger.top + size + gap && card.top + estimatedHeight > finger.top - gap;
+  if (!overlapsX || !overlapsY) return card;
+
+  const vh = window.innerHeight;
+  const below = finger.top + size + gap;
+  if (below + estimatedHeight <= vh - 16) {
+    return { ...card, top: below };
+  }
+  const above = finger.top - estimatedHeight - gap;
+  if (above >= 16) {
+    return { ...card, top: above };
+  }
+  return card;
 }
 
 function clamp(value: number, min: number, max: number) {

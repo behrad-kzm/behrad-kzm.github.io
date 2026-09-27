@@ -35,7 +35,7 @@ export const qaData: QAItem[] = [
       {
         question: 'Can you describe a challenging work situation and how you overcame it?',
         answer:
-          'Smile Link hired me as a consultant to ship a patient iOS app. I built v1 alone over Nowruz — a thin booking client. They got sponsorship and offered a full-time backend seat. My other contract was ending, so I left and rebuilt their messy MVP. The phone app stayed simple. The hard problem was syncing Dentrix, OpenDental, and Sikka into one normalized store without double-booking a chair.',
+          'I did a consultation for a friend who wanted to run a startup. They asked me to ship a patient iOS app. I built v1 alone over Nowruz — a thin booking client. They got an investor and offered a full-time backend seat. My other contract was ending, so I left and rebuilt their messy MVP. The phone app stayed simple. The hard problem was syncing Dentrix, OpenDental, and Sikka into one normalized store without double-booking a chair.',
       },
       {
         question: 'How do you handle stress and pressure?',
@@ -133,7 +133,7 @@ export const qaData: QAItem[] = [
       {
         question: 'How did you join, and did you only do backend?',
         answer:
-          'I started as a consultant. They asked me to build the patient iOS app. I shipped v1 myself over the Nowruz break — booking, not a full clinic OS. They then got sponsorship and offered salary, title, and equity. My other contract was ending. I told that company I was leaving and joined Smile Link full-time as backend. I rebuilt a messy MVP. The phone app stayed simple on purpose. The hard system was behind it. I shipped iOS alone. Most of my time after that was backend, because iOS, Android, and web all sat on the same API.',
+          'I did a consultation for a friend who wanted to run a startup. They asked me to build the patient iOS app. I shipped v1 myself over the Nowruz break — booking, not a full clinic OS. They then got an investor and offered salary, title, and equity. My other contract was ending. I told that company I was leaving and joined Smile Link full-time as backend. I rebuilt a messy MVP. The phone app stayed simple on purpose. The hard system was behind it. I shipped iOS alone. Most of my time after that was backend, because iOS, Android, and web all sat on the same API.',
       },
       {
         question: 'What does an edge service do when a new PMS vendor shows up?',

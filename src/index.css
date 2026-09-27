@@ -148,6 +148,37 @@ All colors MUST be HSL.
   50% { transform: translateX(-8px); }
 }
 
+@keyframes tour-nudge-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes tour-nudge-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
 .tour-finger {
   animation: tour-nudge 0.8s ease-in-out infinite;
+}
+
+.tour-finger-up {
+  animation: tour-nudge-up 0.8s ease-in-out infinite;
+}
+
+.tour-finger-right {
+  animation: tour-nudge-right 0.8s ease-in-out infinite;
+}
+
+.code-viewer-mobile {
+  margin: 0;
+  padding: 1rem 1.1rem 2rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: normal;
+  tab-size: 2;
+  color: hsl(0 0% 85%);
 }

@@ -21,6 +21,7 @@ const TabBar = ({ tabs, activeTabId, onTabClick, onTabClose, onSidebarToggle }: 
       {/* Mobile hamburger button */}
       {onSidebarToggle && (
         <button
+          data-tour="menu-button"
           className="md:hidden flex-shrink-0 px-2.5 py-2 hover:bg-vscode-hover transition-colors flex items-center justify-center"
           onClick={onSidebarToggle}
         >
@@ -30,6 +31,7 @@ const TabBar = ({ tabs, activeTabId, onTabClick, onTabClose, onSidebarToggle }: 
       
       {/* Tabs container with horizontal scroll */}
       <div className="flex items-center overflow-x-auto flex-1 px-2.5 pt-2.5">
+        <div data-tour-finger="tabbar" className="flex items-center">
         {tabs.map((tab) => {
         const isActive = tab.id === activeTabId;
         const extension = getFileExtension(tab.name);
@@ -58,6 +60,7 @@ const TabBar = ({ tabs, activeTabId, onTabClick, onTabClose, onSidebarToggle }: 
           </div>
         );
       })}
+        </div>
       </div>
     </div>
   );

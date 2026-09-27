@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import MarkdownPreview from './MarkdownPreview';
@@ -51,13 +52,31 @@ const CodeViewer = ({ content, filename, onInternalLinkClick }: CodeViewerProps)
   }
   
   const language = getLanguageFromFilename(filename);
-  
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < 768
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const sync = () => setIsMobile(mq.matches);
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="h-full overflow-auto bg-vscode-editor">
+        <pre className="code-viewer-mobile">{content}</pre>
+      </div>
+    );
+  }
+
   return (
     <div className="h-full bg-vscode-editor overflow-auto">
       <SyntaxHighlighter
         language={language}
         style={vscDarkPlus}
-        showLineNumbers={true}
+        showLineNumbers
         customStyle={{
           margin: 0,
           padding: '1rem',
@@ -71,7 +90,6 @@ const CodeViewer = ({ content, filename, onInternalLinkClick }: CodeViewerProps)
           color: '#858585',
           userSelect: 'none',
         }}
-        wrapLines={true}
       >
         {content}
       </SyntaxHighlighter>

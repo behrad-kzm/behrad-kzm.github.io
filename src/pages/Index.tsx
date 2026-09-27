@@ -138,6 +138,7 @@ const Index = () => {
           ) : (
             <div className="flex-1 flex items-center justify-center bg-vscode-editor relative" data-tour="main-window">
               <button
+                data-tour="menu-button"
                 className="absolute top-4 left-4 md:hidden p-2 text-muted-foreground hover:text-foreground hover:bg-vscode-hover rounded-md transition-colors"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
               >
